@@ -1,2 +1,0 @@
-# chronos
-SYP Project
