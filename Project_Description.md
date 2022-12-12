@@ -2,7 +2,8 @@
 
 ## Team:
 - Richard Aigner
-- David Usewicz
+- David Usewiczgu
+- 
 - Qorban Rahimi
 
 ## Projektthema: (Was machen wir)
