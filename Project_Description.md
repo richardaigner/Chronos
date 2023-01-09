@@ -5,31 +5,23 @@
 - David Usewicz
 - Qorban Rahimi
 
+
 ## Projektthema: (Was machen wir)
-- ~~(X) Webside Programmieren~~
 - Spiel Programmierung
-- ~~(X) Ardouino Programmierung (ZB Mini Roboter)~~
+
 
 ## Projekt: Ideen
-- ~~Website mit den Daten aller Ländern – Beispiel: Man gibt ein Land ein und bekommt alle Daten von dem Land, Einwohnerzahl, Größe Bruttoinlandprodukt, Geschichte etc~~
-- ~~Webshop. So wie willhaben oder ebay- Dort können Privatpersonen sachen verkaufen~~
-- ~~Website mit nachrichten die beiträge automatisch in einer weise zusammenfast das wirklich nur die kernaussagen drinstehen und das überlüssige drumherum weggekürzt wird.~~
-- ~~Ki learning projekt – eine webseite auf der man lernen kann wie eine ki funktioniert und man selber eine einfach ki programmieren kann~~
-- ~~Zeiterfassungssoftware für Personal - Mit personalplan~~
-- ~~C# learning platform~~
 - Spiel programmieren mit Unity (Spielengine) und C# als Programmiersprache
 
 
 ## Projekt Spielprogrammieren mit Unity & C#
 - Spielgenre:
-  - ~~Strategiespiel (Turmverteidigung)~~
-  - ~~Jump and Run (Super Mario)~~
-  - ~~Shoot em Up (Figur bewegen mit Autofire)~~
   - Strategiespiel Turmverteidigung mit Shoot em up Elementen
 
 
 ## Ausgangssituation
 - Wir wollen C# lernen indem wir in Unity ein Spiel Programmieren
+
 
 ## Projektziele / Nicht-Ziele (quantifizierbare (messbare) und nicht quantifizierbare Ziele
 **Ziele**
@@ -69,7 +61,6 @@
 
 **Projektende: Ereignis (z.B. Abnahme durch Kunden, Termin)**
 - 26.06.2023
-
 
 **Meilensteine/Ecktermine**
 - Spielbares Demo erstellt
