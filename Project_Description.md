@@ -20,7 +20,7 @@
 
 
 ## Ausgangssituation
-- Wir wollen C# lernen indem wir in Unity ein Spiel Programmieren
+- Wir wollen C# lernen indem wir in Unity ein Spiel programmieren
 
 
 ## Projektziele / Nicht-Ziele (quantifizierbare (messbare) und nicht quantifizierbare Ziele
@@ -87,7 +87,7 @@
 - Richard Aigner
   
 **Projektteammitglieder**
-- Richard Aigner - Programmieren,
+- Richard Aigner - Programmieren
 - David Usewicz - Programmieren, Assets (Grafik / Musik)
 - Qorban Rahimi - Programmieren, Design
 
