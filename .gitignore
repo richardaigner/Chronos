@@ -1,0 +1,6 @@
+# ignore folder for local work
+/local/*
+
+# ignore all log files
+*.log
+
