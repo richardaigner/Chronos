@@ -1,5 +1,5 @@
 # ignore folder for local work
-/local/*
+/Local/*
 
 # ignore all log files
 *.log
