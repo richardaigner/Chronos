@@ -40,5 +40,5 @@ Welle zeigt ein Timer an, wann die nächsten Gegner angelaufen kommen. Durch Pfe
 Bildschirmrand wird außerdem angezeigt, von wo diese Gegner kommen. Am Schluss eines Levels
 kommt dann eine große Welle mit einem Boss Gegner. Nach den Bossgegnern werden weitere Gebäude
 zum bauen freigeschaltet oder es dropen besondere Items für den Spieler um stehts motiviert
-zu sein weiterzuspielen zu wollen.
+zu sein und weiterzuspielen zu wollen.
 
