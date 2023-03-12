@@ -9,12 +9,7 @@ LEVEL - levelablauf, levelaufbau
 PROJECT - allgemeines organisatorisches
 
 ## Timeline
-- CORE - basisprogram mit unity erstellen
-- CORE - unity basisprogram einrichten
-- PLAYER - charakter hinzufügen mit demo grafiken
-- PLAYER - bewegungablauf programmieren
 - PLAYER - schuss object programieren das für spieler, türme und gegner vewendet wird 
-- PLAYER - autoshot grundgerüst mechanik implementieren
 - BUILD - einfache platzierung von türmen ohne funktion
 - BUILD - turm programmierung mit demografik
 - BUILD - turm simples schiessen hinzufügen
@@ -24,13 +19,8 @@ PROJECT - allgemeines organisatorisches
 - LEVEL - demo grasselement hinzufügen
 - LEVEL - platzierung von elementen in demo level
 - LEVEL - demo castle erstellen mit den erstellen mauern zum testen
-- ENEMIES - einfache gegner hinzufügen mit demografik
-- ENEMIES - simplen bewegungsablauf hinzufügen
 - ENEMIES - health system programmieren was passiert wenn er dmg bekommt
 - ENEMIES - pathfinding programmieren zu schloss
-- ENEMIES - einfaches schiessen der gegner programmieren
-- PLAYER - schuss collision detection wen von spielern abgefeuert und gegner trifft programmieren
-- PLAYER - schuss collision detection erweitern auch auf mauern wenn von gegner abgefeuert
 - PLAYER - erweiterung des waffensystems des spieler
 - PLAYER - ausprogrammieren des waffensystems
 - UI - health bar programmieren die für die anzeigen von gegner und mauern hp dient
@@ -42,5 +32,15 @@ PROJECT - allgemeines organisatorisches
 - PROJECT - tasks erweitern und weitere aufgaben hinzufügen
 
 
-
+## Done
+- PLAYER - schuss collision detection wen von spielern abgefeuert und gegner trifft programmieren
+- PLAYER - schuss collision detection erweitern auch auf mauern wenn von gegner abgefeuert
+- ENEMIES - einfaches schiessen der gegner programmieren
+- ENEMIES - simplen bewegungsablauf hinzufügen
+- ENEMIES - einfache gegner hinzufügen mit demografik
+- PLAYER - autoshot grundgerüst mechanik implementieren
+- PLAYER - basic charakter hinzufügen mit demo grafiken
+- PLAYER - basic bewegungablauf programmieren
+- CORE - basisprogram mit unity erstellen
+- CORE - unity basisprogram einrichten
 
