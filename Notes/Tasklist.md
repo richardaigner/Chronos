@@ -1,3 +1,6 @@
+# Tasklist
+
+## Description
 CORE - grundgerüst des spiels, kernelemente
 PLAYER - spieler relevante sachen
 BUILD - alles was mit dem erstellen von türmen oder gebäuden zu tun hat
@@ -5,7 +8,7 @@ ENEMIES - alles was mit gegnern zu tun hat
 LEVEL - levelablauf, levelaufbau
 PROJECT - allgemeines organisatorisches
 
-timeline
+## Timeline
 - CORE - basisprogram mit unity erstellen
 - CORE - unity basisprogram einrichten
 - PLAYER - charakter hinzufügen mit demo grafiken

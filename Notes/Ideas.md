@@ -1,4 +1,6 @@
-- turmverteidigung
+# Ideas
+
+## Turmverteidigung
   - das heist der spieler soll eine festung verteidigen
   - muss aber nicht zwangsweise heisen das er auch gebäude bauen muss
   - wenn dann nur einfache gebäude die einfach zum platzieren sind
@@ -12,20 +14,20 @@
   - man kann aber nicht überall gleichzeitig sein also muss man türme die die gegner abschiessen bauen
   - 
 
-- der grosse unterschied zu einem normalen autoshooter ist das gegner nicht auf den spieler zulaufen sondern auf die burg
+## Der grosse Unterschied zu einem normalen Autoshooter ist das Gegner nicht auf den Spieler zulaufen sondern auf die Basis
   - das eröffnet verschiedene möglichkeiten für den spieler
   - zb mauer wieder aufbauen könnte man implementieren
   - das die mauer mehrere einheiten dick ist und gegner nicht nur ein stück kapüutt machen müssen
   - 
 
-- mit autoshooter elementen
+## Mit Autoshooter Elementen
   - der spieler schiesst gleichzeitig auf gegner in reichweite
   - das heist das der spieler auch aktiv gegen die gegner kämpfen muss
   - alleine türme zu stellen muss aber bei perfektem spiel aber auch ausreichen
   - das der spieler schiessen kann ist als ausgleich zu verstehen das man es leichter hat das level zu schaffen
   - 
 
-- level
+## Level
   - es ist immer nur eine burg zu verteidigen
   - gegner kommen in wellen
   - wellen = level
@@ -42,15 +44,14 @@
   - er kann die mauern verbessern damit sie mehr aushalten
   - 
 
-
-- waffensystem
+## Waffensystem
   - waffensystem von spieler, gegnern und türmen ist das gleiche
   - sie nehmen alle denn selben schuss her nur wird der parent oder enemy typ umgesetzt je nachdem wer das projektiel abschiesst
   - gerade am anfang vereinfacht das alles weil ich nicht so viele extra objecte erstellen muss
   - 
 
 
-- sonstiges
+## Sonstiges
   - die einzelnen wellen sind zeitlich aufeinander abgestimmt
   - sollte man zu langsam sein kann es passieren das die nächste welle bereits kommt wenn gerade noch gekämpft wird
   - wenn man schneller fertig ist wird hingegen aber die nächste welle schneller ausgelöst und man bekommt einen bonus
