@@ -41,3 +41,4 @@ Bildschirmrand wird außerdem angezeigt, von wo diese Gegner kommen. Am Schluss 
 kommt dann eine große Welle mit einem Boss Gegner. Nach den Bossgegnern werden weitere Gebäude
 zum bauen freigeschaltet oder es dropen besondere Items für den Spieler um stehts motiviert
 zu sein und weiterzuspielen zu wollen.
+
