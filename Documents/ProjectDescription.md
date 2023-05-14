@@ -1,43 +1,28 @@
-# Projekt: Chronos
+# Projektbeschreibung: Chronos - Spielprogrammierung mit Unity & C#
 
-## Übersicht über das Projekt
-Wir programmieren zusammen ein Spiel mit der Spiele Engine „Unity“. Das Projekt hat den
-Arbeitstitel Chronos. Die Hauptziele unseres Projekts sind das Projektmanagement und den
-Umgang mit Unity zu lernen. Des weiteren wollen wir unsere Programmierkenntnisse in der
-Programmiersprache C# verbessern.
-Die Assets, also Grafiken, Musik und Sounds werden wir aus dem Asset Store von Unity beziehen.
-Das Spiel wird auf der Seite „Itch.io“ direkt im Browser spielbar sein.
+## Projektziel
+Das Projekt "Chronos" hat zum Ziel, ein Strategiespiel mit Turmverteidigungselementen und Shoot-em-up-Elementen zu programmieren. Das Spiel wird mithilfe der Unity-Spieleengine und der Programmiersprache C# entwickelt.
 
-## Genre des Spiels
-Das Spiel soll eine Mischung aus Turmverteidigung und Autoshooter werden. Wir finden, dass
-ist eine interessante Mischung, die so noch nie da war.
-Bei Turmverteidigungs Spielen baut man Türme und wehrt mit diesen auf die Basis zulaufende
-Gegnerhorden ab.
-Autoshooter sind momentan sehr beliebt. Hier schießt der Charakter des Spielers automatisch
-auf die her anlaufenden Gegner, denen man nur ausweichen muss. Bei Autoshootern entsteht ein
-Hauptteil der Motivation durch das Einsammeln von Gold und Items. Dieses Kernelement ist auch
-bei unserem Spiel sehr wichtig.
+## Team
+Das Projektteam besteht aus Richard Aigner, David Usewicz und Qorban Rahimi.
 
-## Spielablauf zusammengefasst
-Ziel des Spiels ist es, die eigene Basis zu verteidigen. Der Spieler steuert einen Charakter, den
-man sich zu Beginn aussucht. Dieser schießt automatisch auf herannahende Gegner. Diese
-lassen Gold und Items fallen, die der Spieler aufsammeln kann. Mit dem aufgesammelten
-Gold kann der Spieler dann Gebäude bauen, die mit ihm zusammen dann die Basis verteidigen.
-Gegner kommen in Wellen auf die Basis zugelaufen. Wenn man alle Wellen eines Levels erfolgreich
-beendet hat, gewinnt der Spieler.
+## Ausgangssituation
+Die Ausgangssituation des Projekts besteht darin, dass das Team C# erlernen möchte, indem es ein Spiel in Unity entwickelt. Das Projekt soll nicht kommerziell vermarktet oder veröffentlicht werden.
 
-## Spielercharakter
-Der Spieler wählt zu Beginn des Spiels seinen Helden aus. Auswählbar sind Nahkämpfer,
-Fernkämpfer und Magier. Der Held schießt automatisch auf die Gegner. Mit dem Helden
-sammelt man dann Gold ein, um Gebäude zu bauen und zu verbessern. Man kann auch
-Items finden, um den Helden selber stärker zu machen. Der Held sammelt gleichzeitig beim
-Besiegen von Gegner Erfahrungspunkte und wird so mit der Zeit immer stärker.
+## Ziele
+Die quantifizierbaren Ziele des Projekts umfassen das Programmieren des Spiels, das Erlernen von C#, den Umgang mit der Unity-Spieleengine, das Erlernen von Projektmanagement und den Einsatz von Git/Github für die Versionskontrolle.
 
-## Levelaufbau
-Die Karte bzw. das Level kann verschiedene Größen haben. In der Mitte steht die Basis, die es
-zu verteidigen gilt. In den einzelnen Level kommen dann viele Wellen mit Gegnern. Vor jeder
-Welle zeigt ein Timer an, wann die nächsten Gegner angelaufen kommen. Durch Pfeile am
-Bildschirmrand wird außerdem angezeigt, von wo diese Gegner kommen. Am Schluss eines Levels
-kommt dann eine große Welle mit einem Boss Gegner. Nach den Bossgegnern werden weitere Gebäude
-zum bauen freigeschaltet oder es dropen besondere Items für den Spieler um stehts motiviert
-zu sein und weiterzuspielen zu wollen.
+## Hauptaufgaben
+Die Hauptaufgaben und inhaltlichen Komponenten des Projekts beinhalten das Beschaffen und Erstellen von Assets/Grafiken, Sounds und Musik für das Spiel, das Erlernen des Umgangs mit der Unity-Spieleengine, die Bearbeitung weiterführender C#-Themen, die Festlegung des Spielablaufs und das Erstellen des Spielkonzepts, die Programmierung der Benutzeroberfläche, die Implementierung der Spiellogik, einschließlich der Spielersteuerung, das Spieler-Bausystem, die Gegnerlogik und das Wellensystem sowie die Schnittstelle zwischen Spieler und Gegnern. Weitere Aufgaben werden festgelegt, sobald das spielbare Demo erstellt wurde und die Weiterentwicklung zur ALPHA-Version erfolgt.
+
+## Kritische Erfolgsfaktoren
+Die kritischen Erfolgsfaktoren des Projekts liegen in der Lerngeschwindigkeit der Teammitglieder und der Zeit, die für die Umsetzung zur Verfügung steht.
+
+## Projektzeitraum und Meilensteine
+Der Projektzeitraum erstreckt sich vom Kick-off-Meeting am 09.01.2023 bis zum Projektende am 26.06.2023. Wöchentliche Projektstandbesprechungen werden mit allen Mitarbeitern abgehalten. Die Meilensteine des Projekts umfassen die Fertigstellung eines spielbaren Demos, die Implementierung aller Funktionen (ALPHA-Version), die Programmierung und Erstellung aller Inhalte (BETA-Version) sowie die abschließende Fertigstellung und Testphase (FINAL-Version).
+
+## Ressourcen
+Die Ressourcen des Projekts umfassen das Projektteam, bestehend aus Richard Aigner, David Usewicz und Qorban Rahimi. Es fallen keine Kosten an.
+
+## Projektorganisations Rollen
+Die Projektorganisation umfasst Herrn Klewein als Projektauftraggeber, Richard Aigner als Projektleiter sowie die Projektteammitglieder Richard Aigner, David Usewicz und Qorban Rahimi in ihren jeweiligen Rollen. Richard Aigner ist für die Programmierung verantwortlich, David Usewicz kümmert sich um die Assets (Grafiken/Musik) und die Programmierung, während Qorban Rahimi für die Programmierung und das Design zuständig ist.
