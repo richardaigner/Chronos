@@ -8,8 +8,8 @@ public class BulletCollision : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject); // bullet get damage
-            Destroy(gameObject); // enemy get damage
+            Destroy(gameObject); // bullet get damage
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1); // enemy get damage
         }
     }
 }

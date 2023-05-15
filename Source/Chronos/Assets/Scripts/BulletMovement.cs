@@ -41,12 +41,9 @@ public class BulletMovement : MonoBehaviour
                 }
             }
 
-
-            Debug.Log((enemyPosition - new Vector2(transform.position.x, transform.position.y)).normalized);
             return (enemyPosition - new Vector2(transform.position.x, transform.position.y)).normalized;
         }
 
-        Debug.Log("random");
         return GetRandomDirection();
     }
 

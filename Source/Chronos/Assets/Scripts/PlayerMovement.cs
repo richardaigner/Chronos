@@ -4,12 +4,34 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 400;
+    public float moveSpeed = 400;
+    public Vector2 moveDirection;
+
+    public Rigidbody2D rb;
+    public Animator animator;
+    public SpriteRenderer sr;
+
+    public void Update()
+    {
+        moveDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        animator.SetFloat("Horizontal", moveDirection.x);
+        animator.SetFloat("Vertical", moveDirection.y);
+        animator.SetFloat("Speed", moveDirection.sqrMagnitude);
+
+        if (moveDirection.x < 0)
+        {
+            sr.flipX = true;
+        }
+        else
+        {
+            sr.flipX = false;
+        }
+    }
 
     private void FixedUpdate()
     {
-        Vector2 velocity = new Vector2(Input.GetAxis("Horizontal") * speed, Input.GetAxis("Vertical") * speed);
-
-        GetComponent<Rigidbody2D>().velocity = velocity;
+        rb.velocity = moveDirection * moveSpeed;
     }
 }
+
