@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    bool active = true;
-    float spawnTimer = 1.0f;
-    float timeCounter = 1.0f;
+    private bool active = true;
+    private float spawnTimer = 1.0f;
+    private float timeCounter = 1.0f;
+
+    public Camera cam;
     public GameObject enemyPrefab;
 
-    void Update()
+    public void Update()
     {
         if (active)
         {
@@ -24,12 +26,12 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    void SpawnEnemy()
+    public void SpawnEnemy()
     {
-        Instantiate(enemyPrefab, GetSpawnPosition(), Quaternion.identity);
+        Instantiate(enemyPrefab, cam.transform.position + GetSpawnPosition(), Quaternion.identity);
     }
 
-    Vector2 GetSpawnPosition()
+    private Vector3 GetSpawnPosition()
     {
         Vector2 randomPosition;
 
@@ -37,34 +39,29 @@ public class EnemySpawner : MonoBehaviour
         {
             if (Random.Range(0, 2) == 0)
             {
-                randomPosition = new Vector2(0, -550);
+                randomPosition = new Vector3(0, -550, 0);
             }
             else
             {
-                randomPosition = new Vector2(0,  550);
+                randomPosition = new Vector3(0,  550, 0);
             }
 
-            randomPosition = new Vector2(Random.Range(-1000, 1000), randomPosition.y);
+            randomPosition = new Vector3(Random.Range(-1100, 1100), randomPosition.y, 0);
         }
         else
         {
             if (Random.Range(0, 2) == 0)
             {
-                randomPosition = new Vector2(-1000, 0);
+                randomPosition = new Vector3(-1000, 0, 0);
             }
             else
             {
-                randomPosition = new Vector2( 1000, 0);
+                randomPosition = new Vector3( 1000, 0, 0);
             }
 
-            randomPosition = new Vector2(randomPosition.x, Random.Range(-550, 550));
+            randomPosition = new Vector3(randomPosition.x, Random.Range(-600, 600), 0);
         }
 
         return randomPosition;
-    }
-
-    public void IncreaseEnemySpawn(float amount)
-    {
-        spawnTimer -= amount;
     }
 }

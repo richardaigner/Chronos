@@ -6,25 +6,42 @@ using UnityEngine.UI;
 
 public class BulletMovement : MonoBehaviour
 {
+    private Vector2 spawnPosition;
     public float speed = 1000;
-    Vector2 direction;
+    private float distance = 500;
+    
+    private Vector2 direction;
 
-    void Start()
+    private void Start()
     {
+        spawnPosition = transform.position;
         direction = GetNearestEnemyDirection();
-        //GetComponent<Rigidbody2D>().velocity = GetNearestEnemyDirection() * speed;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
+    {
+        Move();
+        CheckTraveledDistance();
+    }
+
+    private void Move()
     {
         GetComponent<Rigidbody2D>().velocity = direction * speed;
     }
 
-    Vector2 GetNearestEnemyDirection()
+    private void CheckTraveledDistance()
+    {
+        float currentDistance = Vector2.Distance(spawnPosition, transform.position);
+
+        if (currentDistance >= distance)
+        {
+            Remove();
+        }
+    }
+
+    private Vector2 GetNearestEnemyDirection()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        GameObject.Find("InfoText").gameObject.GetComponent<Text>().text = enemies.Length.ToString();
 
         if (enemies.Length > 0)
         {
@@ -44,11 +61,17 @@ public class BulletMovement : MonoBehaviour
             return (enemyPosition - new Vector2(transform.position.x, transform.position.y)).normalized;
         }
 
-        return GetRandomDirection();
+        return GetRandomDirection(); // if no enemy is in range
     }
 
-    Vector2 GetRandomDirection()
+    private Vector2 GetRandomDirection()
     {
         return new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
+    }
+
+    private void Remove()
+    {
+        GetComponent<Collider2D>().enabled = false;
+        Destroy(this.gameObject);
     }
 }

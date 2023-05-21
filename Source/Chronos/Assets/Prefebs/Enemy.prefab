@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4509613864193966704}
   - component: {fileID: 7204567552067775257}
   - component: {fileID: 5873891025557566552}
-  - component: {fileID: 1469077735978639760}
   - component: {fileID: 6337274643985371174}
+  - component: {fileID: 1469077735978639760}
   - component: {fileID: 247663959525834745}
   m_Layer: 0
   m_Name: Enemy
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1233554255
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b51d18577d0ec4d29b81998d983bd710, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -114,21 +114,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1363008, y: 0.226688}
   m_EdgeRadius: 0
---- !u!114 &1469077735978639760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6999764395561556500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a50b3c08d02febf4ba47c0fdbad0bd4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 200
-  animator: {fileID: 6337274643985371174}
-  sr: {fileID: 7204567552067775257}
 --- !u!95 &6337274643985371174
 Animator:
   serializedVersion: 5
@@ -150,6 +135,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1469077735978639760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999764395561556500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50b3c08d02febf4ba47c0fdbad0bd4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 200
+  animator: {fileID: 6337274643985371174}
+  sr: {fileID: 7204567552067775257}
 --- !u!114 &247663959525834745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,4 +163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  health: 1
   animator: {fileID: 6337274643985371174}
+  xpPrefab: {fileID: 7952815365217462360, guid: 732d29f7ef0680a4fb776c3de211d966, type: 3}

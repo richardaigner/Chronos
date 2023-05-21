@@ -6,9 +6,8 @@ public class ButtonEnemies : MonoBehaviour
 {
     public EnemySpawner enemySpawner;
 
-    public void IncreaseEnemySpawnSpeed()
+    public void SpawnEnemy()
     {
-        enemySpawner.IncreaseEnemySpawn(0.05f);
+        enemySpawner.SpawnEnemy();
     }
-
 }

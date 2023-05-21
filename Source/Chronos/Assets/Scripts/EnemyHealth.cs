@@ -7,20 +7,31 @@ public class EnemyHealth : MonoBehaviour
     public bool isDead;
     private float deathTimer = 0.5f;
 
+    public int health = 1;
+
     public Animator animator;
+    public GameObject xpPrefab;
     
-    public void TakeDamage(int amount)
+    public void GetDamage(int amount)
     {
-        // for testing
-        if (!isDead)
+        health -= amount;
+
+
+        if (health <= 0 && !isDead)
         {
-            isDead = true;
-
-            animator.SetBool("Dead", isDead);
-
-            GetComponent<EnemyMovement>().enabled = false;
-            GetComponent<Collider2D>().enabled = false;
-            Destroy(gameObject, deathTimer);
+            Remove();
         }
+    }
+
+    private void Remove()
+    {
+        isDead = true;
+
+        animator.SetBool("Dead", isDead);
+        Instantiate(xpPrefab, transform.position, Quaternion.identity);
+
+        GetComponent<EnemyMovement>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        Destroy(gameObject, deathTimer);
     }
 }
