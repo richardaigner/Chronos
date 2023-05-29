@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TimeCounter : MonoBehaviour
 {
-    private float _timeInSeconds = 30 * 60;
+    private float _timeInSeconds;
     private Text _textField;
 
     private void Start()
@@ -16,7 +16,16 @@ public class TimeCounter : MonoBehaviour
 
     private void Update()
     {
-        _timeInSeconds -= Time.deltaTime;
-        _textField.text = Mathf.Floor(_timeInSeconds / 60).ToString() + ":" + Mathf.Floor(_timeInSeconds % 60).ToString();
+        _timeInSeconds += Time.deltaTime;
+
+        string minutes = Mathf.Floor(_timeInSeconds / 60).ToString();
+        string seconds = Mathf.Floor(_timeInSeconds % 60).ToString();
+
+        if (Mathf.Floor(_timeInSeconds % 60) < 10)
+        {
+            seconds = "0" + seconds;
+        }
+
+        _textField.text = minutes + ":" + seconds;
     }
 }

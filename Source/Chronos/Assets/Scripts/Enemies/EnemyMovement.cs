@@ -7,36 +7,45 @@ public class EnemyMovement : MonoBehaviour
 {
     private float _speed = 200;
 
-    private Transform _playerTransform;
-    private SpriteRenderer _spriteRenderer;
+    private Transform _target;
     private Animator _animator;
 
     private void Start()
     {
-        _playerTransform = GameObject.Find("Player").transform;
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        Vector2 oldPosition = transform.position;
-        transform.position = Vector2.MoveTowards(transform.position, _playerTransform.position, _speed * Time.deltaTime);
-        Vector2 newPosition = transform.position;
+        FindTarget();
+        UpdateMovement();
+    }
 
-        Vector2 moveDirection = newPosition - oldPosition;
-
-        _animator.SetFloat("Horizontal", moveDirection.x);
-        _animator.SetFloat("Vertical", moveDirection.y);
-        _animator.SetFloat("Speed", moveDirection.sqrMagnitude);
-
-        if (moveDirection.x < 0)
+    private void FindTarget()
+    {
+        if (_target == null)
         {
-            _spriteRenderer.flipX = true;
+            GameObject player = GameObject.Find("Player");
+            
+            if (player != null )
+            {
+                _target = player.transform;
+            }
         }
-        else
+    }
+
+    private void UpdateMovement()
+    {
+        if (_target != null)
         {
-            _spriteRenderer.flipX = false;
+            Vector2 oldPosition = transform.position;
+            transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
+            Vector2 newPosition = transform.position;
+
+            Vector2 moveDirection = newPosition - oldPosition;
+
+            _animator.SetFloat("Horizontal", moveDirection.x);
+            _animator.SetFloat("Vertical", moveDirection.y);
         }
     }
 }

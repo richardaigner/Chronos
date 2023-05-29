@@ -6,24 +6,36 @@ public class EnemyHealth : MonoBehaviour
 {
     private bool _alive = true;
     private int _health = 1;
-    private float _deathTimer = 0.5f;
+    private float _deathTimer = 0.25f;
 
     private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
     [SerializeField] private GameObject _xpPrefab;
-
+    
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        if (!_alive)
+        {
+            UpdateDeathAnimation();
+        }
     }
 
     public void GetDamage(int amount)
     {
-        _health -= amount;
-
-
-        if (_health <= 0 && _alive)
+        if (_alive)
         {
-            Remove();
+            _health -= amount;
+
+            if (_health <= 0 && _alive)
+            {
+                Remove();
+            }
         }
     }
 
@@ -31,11 +43,20 @@ public class EnemyHealth : MonoBehaviour
     {
         _alive = false;
 
-        _animator.SetBool("Dead", !_alive);
         Instantiate(_xpPrefab, transform.position, Quaternion.identity);
 
         GetComponent<EnemyMovement>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
-        Destroy(gameObject, _deathTimer);
+    }
+
+    private void UpdateDeathAnimation()
+    {
+        _deathTimer -= Time.deltaTime;
+        _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, _deathTimer * 4);
+        
+        if (_deathTimer <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -21,11 +21,14 @@ public class ItemXp : MonoBehaviour
 
     private void Update()
     {
-        CheckRangeToPlayer();
-
-        if (_moveToPlayer)
+        if (_playerGameObject != null )
         {
-            MoveToPlayer();
+            CheckRangeToPlayer();
+
+            if (_moveToPlayer)
+            {
+                MoveToPlayer();
+            }
         }
     }
 

@@ -7,10 +7,10 @@ public class PlayerLevel : MonoBehaviour
 {
     private int _level = 1;
     private int _xp = 0;
-    private int _xpNeedForLevel = 3; // default 10 -> for testing set to 3
+    private int _xpNeedForLevel = 10;
     private float _xpNeedIncreaseFactor = 1.2f;
 
-    [SerializeField] private GameObject _uiXpProgressBar;
+    [SerializeField] private ProgressBar _uiXpProgressBar;
     [SerializeField] private GameObject _uiUpgradeSelect;
 
     public void AddXp(int value)
@@ -22,7 +22,7 @@ public class PlayerLevel : MonoBehaviour
             LevelUp();
         }
 
-        _uiXpProgressBar.GetComponent<XpProgressBar>().UpdateBar(_xp, _xpNeedForLevel);
+        _uiXpProgressBar.UpdateProgress(_xp, _xpNeedForLevel);
     }
 
     private void LevelUp()
@@ -35,11 +35,11 @@ public class PlayerLevel : MonoBehaviour
 
     private void ShowUpgradeWindow()
     {
-        PauseGames();
+        PauseGame();
         _uiUpgradeSelect.SetActive(true);
     }
 
-    private void PauseGames()
+    private void PauseGame()
     {
         Time.timeScale = 0;
     }

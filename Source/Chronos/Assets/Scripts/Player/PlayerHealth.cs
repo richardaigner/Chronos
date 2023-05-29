@@ -5,20 +5,42 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private int _health = 10;
+    private bool _alive = true;
+    private int _currentHealth;
+    private int _maxHealth = 10;
 
-    public void GetDamage(int value)
+    [SerializeField] private ProgressBar _healthBar;
+
+    private void Start()
     {
-        _health -= value;
+        _currentHealth = _maxHealth;
+        _healthBar.UpdateProgress(_currentHealth, _maxHealth);
+    }
 
-        if (_health <= 0)
+    public void GetDamage(int value, Vector2 fromDirection)
+    {
+        if (_alive)
         {
-            Remove();
+            _currentHealth -= value;
+            _healthBar.UpdateProgress(_currentHealth, _maxHealth);
+            GetComponent<PlayerMovement>().Recoil(fromDirection);
+
+            if (_currentHealth <= 0)
+            {
+                Remove();
+            }
         }
+    }
+
+    public void Heal(int value)
+    {
+
+        _healthBar.UpdateProgress(_currentHealth, _maxHealth);
     }
 
     private void Remove()
     {
-        // todo: gameover
+        _alive = false;
+        this.gameObject.SetActive(false);
     }
 }
