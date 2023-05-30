@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
 
     private Vector3 _offset;
     private Vector3 _targetPos;
-    private float _lerpSpeed = 5.0f;
+    private float _lerpSpeed = 8.0f;
 
     [SerializeField] private Transform _target;
 

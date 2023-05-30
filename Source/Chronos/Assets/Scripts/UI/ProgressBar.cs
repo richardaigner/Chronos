@@ -19,6 +19,7 @@ public class ProgressBar : MonoBehaviour
     [SerializeField] private float _animatenSpeed = 5;
 
     SpriteRenderer _spriteRenderer;
+    [SerializeField] SpriteRenderer _spriteRendererBackground;
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class ProgressBar : MonoBehaviour
         _currentSize = _startSize;
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _spriteRenderer.color = new UnityEngine.Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, _currentAlpha);
+        _spriteRendererBackground.color = new UnityEngine.Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, _currentAlpha - 0.8f);
     }
 
     private void Update()
@@ -35,9 +37,9 @@ public class ProgressBar : MonoBehaviour
         UpdateAlpha();
     }
 
-    public void UpdateProgress(int value, int maxValue)
+    public void SetProgress(int curValue, int maxValue)
     {
-        _currentSize = (_maxSize / maxValue) * value;
+        _currentSize = (_maxSize / maxValue) * curValue;
     }
 
     private void UpdateSize()
@@ -62,6 +64,7 @@ public class ProgressBar : MonoBehaviour
             {
                 _currentAlpha -= _alphaFadeSpeed * Time.deltaTime;
                 _spriteRenderer.color = new UnityEngine.Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, _currentAlpha);
+                _spriteRendererBackground.color = new UnityEngine.Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, _currentAlpha - 0.8f);
             }
         }
         else
@@ -70,6 +73,7 @@ public class ProgressBar : MonoBehaviour
             {
                 _currentAlpha += _alphaFadeSpeed * Time.deltaTime;
                 _spriteRenderer.color = new UnityEngine.Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, _currentAlpha);
+                _spriteRendererBackground.color = new UnityEngine.Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, _currentAlpha - 0.8f);
             }
         }
     }

@@ -1,31 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UpgradeSelect : MonoBehaviour
 {
-    [SerializeField] private GameObject _button; // temp - for testing only
+    private int _upgradeButtonCount = 2;
+    private Vector2[] _upgradeButtonPosition = { new Vector2(0, 60), new Vector2(0, -60), new Vector2(0, -180), new Vector2(0, -300) };
+    private GameObject[] _upgradeButtons = new GameObject[4];
+
+    [SerializeField] private GameObject[] _possibleUpgrades;
 
     private void Start()
     {
         HideUpgradeWindow();
     }
 
-    private void Update()
+    public void CreateUpgradeButtons()
     {
-        // for testing
-        if (Input.GetAxisRaw("Select1") == 1 || Input.GetAxisRaw("Select2") == 1 || Input.GetAxisRaw("Select3") == 1 || Input.GetAxisRaw("Dash") == 1)
+        int[] randomWeaponIds = new int[_upgradeButtonCount];
+
+        for (int i = 0; i < _upgradeButtonCount; i++)
         {
-            _button.GetComponent<ButtonAttack>().IncreaseAttackSpeed();
-            //_button.GetComponent<>
-            HideUpgradeWindow();
+            do
+            {
+                randomWeaponIds[i] = Random.Range(0, _possibleUpgrades.Length);
+            } while (IsValueInArray(randomWeaponIds, randomWeaponIds[i], i));
+        }
+
+        for (int i = 0; i < _upgradeButtonCount; i++)
+        {
+            _upgradeButtons[i] = Instantiate(_possibleUpgrades[randomWeaponIds[i]], this.transform);
+            _upgradeButtons[i].transform.localPosition = _upgradeButtonPosition[i];
+            _upgradeButtons[i].GetComponent<UpgradeButton>().SetupButton(i + 1, this);
         }
     }
 
-    private void HideUpgradeWindow()
+    private bool IsValueInArray(int[] array, int value, int length)
+    {
+        for (int u = 0; u < length; u++)
+        {
+            if (array[u] == value)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void RemoveUpgradeButtons()
+    {
+        for (int i = 0; i < _upgradeButtonCount; i++)
+        {
+            Destroy(_upgradeButtons[i]);
+        }
+    }
+
+    public void HideUpgradeWindow()
     {
         ResumeGame();
+        RemoveUpgradeButtons();
         this.gameObject.SetActive(false);
     }
 

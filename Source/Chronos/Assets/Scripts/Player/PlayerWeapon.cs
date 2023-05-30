@@ -1,36 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
 {
-    private bool _active = true;
-    private float _attackSpeed = 1.0f; // 0.5 = 2 Attacks per second || lower is faster attack speed
-    private float _timeCounter = 1.0f;
+    [SerializeField] private GameObject[] _weaponPrefabs;
 
-    [SerializeField] private GameObject _shotPrefab;
-
-    private void Update()
+    private void Start()
     {
-        if (_active)
-        {
-            _timeCounter -= Time.deltaTime;
-
-            if (_timeCounter < 0.0f)
-            {
-                _timeCounter += _attackSpeed;
-                FireWeapon();
-            }
-        }
+        UpgradeWeapon(0);
     }
 
-    private void FireWeapon()
+    public void UpgradeWeapon(int weaponId)
     {
-        Instantiate(_shotPrefab, transform.position, Quaternion.identity);
-    }
-
-    public void IncreaseAttackSpeed(float amount)
-    {
-        _attackSpeed -= amount;
+        Instantiate(_weaponPrefabs[weaponId], this.gameObject.transform);
     }
 }

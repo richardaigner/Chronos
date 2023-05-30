@@ -7,7 +7,7 @@ public class ItemXp : MonoBehaviour
 {
     private int _value = 1;
     private bool _moveToPlayer = false;
-    private float _moveSpeed = 200;
+    private float _moveSpeed = 250;
     private float _moveSpeedIncrease = 1.01f;
     private float _collectRadius = 30;
 
@@ -55,7 +55,7 @@ public class ItemXp : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             PlayerCollected();
         }

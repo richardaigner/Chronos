@@ -9,8 +9,6 @@ public class EnemyCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Vector2 hitDirection = (other.transform.position - transform.position).normalized;
-
-            GetComponent<EnemyHealth>().GetDamage(1);
             other.gameObject.GetComponent<PlayerHealth>().GetDamage(this.GetComponent<EnemyWeapon>().Damage, hitDirection);
         }
     }

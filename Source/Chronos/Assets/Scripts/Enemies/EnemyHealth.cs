@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     private bool _alive = true;
-    private int _health = 1;
+    private int _health = 5;
     private float _deathTimer = 0.25f;
 
     private Animator _animator;

@@ -9,8 +9,8 @@ public class EnemySpawner : MonoBehaviour
     private float _spawnTimer = 1.0f;
     private float _timeCounter = 1.0f;
 
-    public Camera _camera;
-    public GameObject _enemyPrefab;
+    [SerializeField] private Camera _camera;
+    [SerializeField] private GameObject[] _enemyPrefabs;
 
     public void Update()
     {
@@ -28,8 +28,12 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        GameObject enemy = Instantiate(_enemyPrefab, _camera.transform.position + GetSpawnPosition(), Quaternion.identity);
-        enemy.GetComponent<EnemyType>().LoadEnemy(Random.Range(0, 4));
+        int enemyId = Random.Range(0, _enemyPrefabs.Length);
+
+        if (_enemyPrefabs.Length > 0 )
+        {
+            Instantiate(_enemyPrefabs[enemyId], _camera.transform.position + GetSpawnPosition(), Quaternion.identity);
+        }
     }
 
     private Vector3 GetSpawnPosition()
