@@ -9,11 +9,10 @@ using UnityEngine.UIElements;
 public class WeaponShotMovement : MonoBehaviour
 {
     private float _moveSpeed = 500;
-    private float _range = 500;
-    [SerializeField] private float _rotationSpeed = 0;
-    [SerializeField] private float _rndFactor = 1;
-
-    [SerializeField] private float _circularDistance = 0;
+    private float _flyRange = 500;
+    private float _rotationSpeed = 0;
+    private float _rndFactor = 1;
+    private float _circularDistance = 0;
     private Transform _circularOrigin;
 
     private Vector2 _spawnPosition;
@@ -38,10 +37,13 @@ public class WeaponShotMovement : MonoBehaviour
         CheckTraveledDistance();
     }
 
-    public void SetStats(float speed, float range, Vector2 direction, Transform target)
+    public void SetValues(WeaponValues weaponValues, Vector2 direction, Transform target)
     {
-        _moveSpeed = speed;
-        _range = range;
+        _moveSpeed = weaponValues.MoveSpeed;
+        _flyRange = weaponValues.FlyRange;
+        _rotationSpeed = weaponValues.RotationSpeed;
+        _rndFactor = weaponValues.RndFactor;
+        _circularDistance = weaponValues.CircularDistance;
         _direction = direction;
         _target = target;
     }
@@ -79,7 +81,7 @@ public class WeaponShotMovement : MonoBehaviour
     {
         float currentDistance = Vector2.Distance(_spawnPosition, transform.position);
 
-        if (currentDistance >= _range)
+        if (currentDistance >= _flyRange)
         {
             Remove();
         }

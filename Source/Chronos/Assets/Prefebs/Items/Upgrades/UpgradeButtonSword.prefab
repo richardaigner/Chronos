@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponId: 3
-  _buttonText: Upgrade Sword
+  _itemName: Sword
   _text: {fileID: 6143997234379801818}
 --- !u!1 &1566550985143082577
 GameObject:

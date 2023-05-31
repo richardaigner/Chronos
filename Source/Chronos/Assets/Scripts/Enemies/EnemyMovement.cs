@@ -5,7 +5,13 @@ using UnityEngine.EventSystems;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private float _speed = 200;
+    private float _speed = 150;
+
+    private float _knockbackTimeCounter = 0;
+    private float _knockbackTimeLength = 0.2f;
+    private float _knockbackForceCounter = 0;
+    private float _knockbackForceMax = 1000;
+    private Vector2 _knockbackDirection;
 
     private Transform _target;
     private Animator _animator;
@@ -38,8 +44,18 @@ public class EnemyMovement : MonoBehaviour
     {
         if (_target != null)
         {
+            Vector2 knockbackVelocity = Vector2.zero;
+
+            if (_knockbackTimeCounter > 0)
+            {
+                _knockbackTimeCounter -= Time.deltaTime;
+                _knockbackForceCounter = _knockbackForceMax * _knockbackTimeCounter * (1 / _knockbackTimeLength);
+
+                knockbackVelocity = _knockbackDirection * _knockbackForceCounter;
+            }
+
             Vector2 oldPosition = transform.position;
-            transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime) + knockbackVelocity * Time.deltaTime;
             Vector2 newPosition = transform.position;
 
             Vector2 moveDirection = newPosition - oldPosition;
@@ -47,5 +63,13 @@ public class EnemyMovement : MonoBehaviour
             _animator.SetFloat("Horizontal", moveDirection.x);
             _animator.SetFloat("Vertical", moveDirection.y);
         }
+    }
+
+
+    public void Knockback(Vector2 fromDirection, float force)
+    {
+        _knockbackTimeCounter = _knockbackTimeLength;
+        _knockbackDirection = fromDirection;
+        _knockbackForceMax = force;
     }
 }

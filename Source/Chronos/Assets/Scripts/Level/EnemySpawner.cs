@@ -5,34 +5,22 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private bool _active = true;
-    private float _spawnTimer = 1.0f;
-    private float _timeCounter = 1.0f;
-
     [SerializeField] private Camera _camera;
     [SerializeField] private GameObject[] _enemyPrefabs;
 
-    public void Update()
+    public void SpawnEnemies(int enemyId, int enemyLevel, int enemyAmount)
     {
-        if (_active)
-        {
-            _timeCounter -= Time.deltaTime;
+        Vector2 spawnPosition = _camera.transform.position + GetSpawnPosition();
 
-            if (_timeCounter < 0.0f)
+        for (int i = 0; i < enemyAmount; i++)
+        {
+            if (_enemyPrefabs.Length > 0)
             {
-                _timeCounter += _spawnTimer;
-                SpawnEnemy();
+                int spawnField = 100;
+                Vector2 mod = new Vector2(Random.Range(-spawnField, spawnField), Random.Range(-spawnField, spawnField));
+                GameObject enemy = Instantiate(_enemyPrefabs[enemyId], spawnPosition + mod, Quaternion.identity);
+                enemy.GetComponent<EnemyLevel>().SetLevel(enemyLevel);
             }
-        }
-    }
-
-    public void SpawnEnemy()
-    {
-        int enemyId = Random.Range(0, _enemyPrefabs.Length);
-
-        if (_enemyPrefabs.Length > 0 )
-        {
-            Instantiate(_enemyPrefabs[enemyId], _camera.transform.position + GetSpawnPosition(), Quaternion.identity);
         }
     }
 

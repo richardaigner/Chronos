@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8152784748708967096}
   - component: {fileID: 4725536531578017128}
+  - component: {fileID: -6890954748653253801}
   - component: {fileID: 6230942357797649062}
   - component: {fileID: 7664496731444797228}
   - component: {fileID: 4008402646352318226}
   - component: {fileID: 4393063342104374398}
   m_Layer: 8
-  m_Name: PlayerWeaponBowArrow
+  m_Name: PlayerWeapon03SwordSlash
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,14 +29,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869395113073208423}
-  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0, z: 0.6427876, w: 0.7660445}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 128, y: 128, z: 1}
+  m_LocalScale: {x: 250, y: 350, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 80}
 --- !u!212 &4725536531578017128
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7b7853164c407d046866c558d682f749, type: 3}
+  m_Sprite: {fileID: 150855615, guid: 030d4b488d4647a49a1173e72707cdb0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -88,6 +89,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &-6890954748653253801
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869395113073208423}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 846c7089bfe0cc44eb86b6e146c8d331, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!58 &6230942357797649062
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -103,7 +125,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.17
+  m_Radius: 0.26
 --- !u!50 &7664496731444797228
 Rigidbody2D:
   serializedVersion: 4
@@ -137,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b2223d544b9ea4db49c531d250562b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifetimeActive: 0
-  _lifetimeCounter: 0
+  _lifetimeActive: 1
+  _lifetimeCounter: 0.2
   _effectPrefeb: {fileID: 2127182024690063338, guid: c683885a81e54d94594ec0d7b9fe339c, type: 3}
 --- !u!114 &4393063342104374398
 MonoBehaviour:

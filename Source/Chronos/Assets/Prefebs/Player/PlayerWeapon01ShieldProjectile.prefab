@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4008402646352318226}
   - component: {fileID: 4393063342104374398}
   m_Layer: 8
-  m_Name: PlayerWeaponOrbitShield
+  m_Name: PlayerWeapon01ShieldProjectile
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifetimeActive: 1
-  _lifetimeCounter: 1.5
+  _lifetimeCounter: 2
   _effectPrefeb: {fileID: 2127182024690063338, guid: c683885a81e54d94594ec0d7b9fe339c, type: 3}
 --- !u!114 &4393063342104374398
 MonoBehaviour:

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3369951244912401354}
   - component: {fileID: 5050677973866422098}
   m_Layer: 5
-  m_Name: UpgradeButtonOrbit
+  m_Name: UpgradeButtonShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponId: 1
-  _buttonText: Upgrade Orbit
+  _itemName: Shield
   _text: {fileID: 6143997234379801818}
 --- !u!1 &1566550985143082577
 GameObject:

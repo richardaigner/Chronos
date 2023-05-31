@@ -9,18 +9,11 @@ public class UpgradeButton : MonoBehaviour
     [SerializeField] private int _weaponId = 0;
 
     private int _buttonNum = 1;
-    [SerializeField] private string _buttonText = "";
+    [SerializeField] private string _itemName = "";
     [SerializeField] private Text _text;
     
     private Button _button;
     private UpgradeSelect _upgradeSelect;
-
-    public void SetupButton(int buttonNum, UpgradeSelect upgradeSelect)
-    {
-        _buttonNum = buttonNum;
-        _upgradeSelect = upgradeSelect;
-        _text.text = _buttonNum + ". " + _buttonText;
-    }
 
     private void Start()
     {
@@ -35,6 +28,24 @@ public class UpgradeButton : MonoBehaviour
             UpgradeWeapon();
             _upgradeSelect.HideUpgradeWindow();
         }
+    }
+
+    public void SetupButton(int buttonNum, UpgradeSelect upgradeSelect)
+    {
+        _buttonNum = buttonNum;
+        _upgradeSelect = upgradeSelect;
+
+        string itemText;
+        int playerWeaponLevel = GameObject.Find("Player").GetComponent<PlayerWeapon>().Weapons[_weaponId].Level;
+        if (playerWeaponLevel == 0)
+        {
+            itemText = "Collect new weapon -> " + _itemName;
+        }
+        else
+        {
+            itemText = "Upgrade " + _itemName + " to level " + (playerWeaponLevel + 1);
+        }
+        _text.text = _buttonNum + ". " + itemText;
     }
 
     private void OnClick()

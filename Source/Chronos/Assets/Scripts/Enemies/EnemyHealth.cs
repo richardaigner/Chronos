@@ -5,17 +5,17 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     private bool _alive = true;
-    private int _health = 5;
+    private int _health = 20;
     private float _deathTimer = 0.25f;
 
-    private Animator _animator;
     private SpriteRenderer _spriteRenderer;
+    private EnemyMovement _enemyMovement;
     [SerializeField] private GameObject _xpPrefab;
     
     private void Start()
     {
-        _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _enemyMovement = GetComponent<EnemyMovement>();
     }
 
     private void Update()
@@ -26,11 +26,12 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public void GetDamage(int amount)
+    public void GetDamage(int amount, Vector2 direction, float force)
     {
         if (_alive)
         {
             _health -= amount;
+            _enemyMovement.Knockback(direction, force);
 
             if (_health <= 0 && _alive)
             {

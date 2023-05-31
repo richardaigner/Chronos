@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3654331397402665321}
   - component: {fileID: 1882831894904382111}
   m_Layer: 7
-  m_Name: PlayerWeaponBow
+  m_Name: PlayerWeapon02Shuriken
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,13 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23942f48a0f084d45b6e224653d036cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackSpeedLength: 1
-  _shotDamage: 20
-  _shotPiercing: 0
-  _shotSpeed: 500
-  _shotRange: 600
-  _shotProjectileCount: 1
-  _shotProjectileAngleMod: 0
+  _weaponId: 2
   _shotSpawnDistance: 20
-  _shotAngleMod: -45
-  _shotPrefab: {fileID: 869395113073208423, guid: d47bce469cecdfd408fe803ed6b4629b, type: 3}
+  _shotAngleMod: 0
+  _shotShowToTarget: 1
+  _shotPrefab: {fileID: 869395113073208423, guid: 93b7a4b6217b0084d97b1f6a0f4f1730, type: 3}

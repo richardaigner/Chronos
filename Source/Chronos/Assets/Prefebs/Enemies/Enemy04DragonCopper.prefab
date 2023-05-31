@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2347816354032328232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.1299, z: 0}
+  m_LocalPosition: {x: 0, y: -0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,13 +43,14 @@ GameObject:
   - component: {fileID: 7204567552067775257}
   - component: {fileID: 5873891025557566552}
   - component: {fileID: 6337274643985371174}
+  - component: {fileID: 2949403427711939273}
+  - component: {fileID: 2499592474839413131}
   - component: {fileID: 247663959525834745}
   - component: {fileID: 1469077735978639760}
-  - component: {fileID: 2949403427711939273}
   - component: {fileID: 5658123161274294620}
   - component: {fileID: 8639898378540838925}
   m_Layer: 9
-  m_Name: EnemySnake
+  m_Name: Enemy04DragonCopper
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +113,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -324803084, guid: ba326a7e5a4808f448397f6e691a435e, type: 3}
+  m_Sprite: {fileID: 1829795018, guid: 5a3b2627c1f665548998327fc133b830, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,18 +137,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.031248994, y: -0.03045617}
+  m_Offset: {x: 0.00082205236, y: -0.00078469515}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.31, y: 0.35}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2206374, y: 0.22262147}
+  m_Size: {x: 0.6413593, y: 0.5995822}
   m_EdgeRadius: 0
 --- !u!95 &6337274643985371174
 Animator:
@@ -159,7 +160,7 @@ Animator:
   m_GameObject: {fileID: 6999764395561556500}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 321075e61466b0e4db79e89ffcbb1aeb, type: 2}
+  m_Controller: {fileID: 9100000, guid: a13130165a4cbee4f8b79aa40839e0af, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -170,6 +171,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2949403427711939273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999764395561556500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ccb5496742705428163fb25ef8097b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ySortingOffset: 0
+  ySortingOffsetObject: {fileID: 7054164366027982884}
+--- !u!114 &2499592474839413131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999764395561556500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff4a6a9dbb778545a6d8d1e8fd91150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &247663959525834745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,20 +222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50b3c08d02febf4ba47c0fdbad0bd4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2949403427711939273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6999764395561556500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8ccb5496742705428163fb25ef8097b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ySortingOffset: 0
-  ySortingOffsetObject: {fileID: 7054164366027982884}
 --- !u!114 &5658123161274294620
 MonoBehaviour:
   m_ObjectHideFlags: 0

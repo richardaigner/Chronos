@@ -2,30 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponCore : MonoBehaviour
+public class WeaponController : MonoBehaviour
 {
-    private bool _active = true;
- 
-    private float _attackSpeedCounter;
-    [SerializeField] private float _attackSpeedLength = 1;
-    
-    [SerializeField] private int _shotDamage = 1;
-    [SerializeField] private bool _shotPiercing = true;
-    [SerializeField] private float _shotSpeed = 2000;
-    [SerializeField] private float _shotRange = 500;
+    private bool _active = false;
+    private int _level = 0;
 
-    [SerializeField] private int _shotProjectileCount = 1;
-    [SerializeField] private int _shotProjectileAngleMod = 0;
+    public int Level { get { return _level; } }
+
+    [SerializeField] private int _weaponId = 0;
+
+    private float _attackSpeedCounter;
 
     [SerializeField] private float _shotSpawnDistance = 20;
     [SerializeField] private float _shotAngleMod = 0;
     [SerializeField] private bool _shotShowToTarget = true;
 
+    WeaponValues[] _weaponValues;
+
     [SerializeField] private GameObject _shotPrefab;
 
     private void Start()
     {
-        _attackSpeedCounter = _attackSpeedLength;
+        _weaponValues = WeaponLevelValues.GetWeaponValues(_weaponId);
+        _attackSpeedCounter = _weaponValues[_level].AttackSpeed;
     }
 
     private void Update()
@@ -36,9 +35,22 @@ public class WeaponCore : MonoBehaviour
 
             if (_attackSpeedCounter <= 0)
             {
-                _attackSpeedCounter += _attackSpeedLength;
+                _attackSpeedCounter += _weaponValues[_level].AttackSpeed;
                 FireWeapon();
             }
+        }
+    }
+
+    public void Upgrade()
+    {
+        if (_level == 0)
+        {
+            _level++;
+            _active = true;
+        }
+        else if (_level < _weaponValues.Length - 1)
+        {
+            _level++;
         }
     }
 
@@ -48,12 +60,12 @@ public class WeaponCore : MonoBehaviour
         Vector2 spawnPosition = transform.position;
         spawnPosition += direction * _shotSpawnDistance;
 
-        int projectileCountMin = -(_shotProjectileCount / 2);
-        int projectileCountMax = projectileCountMin + _shotProjectileCount;
+        int projectileCountMin = -(_weaponValues[_level].ProjectileCount / 2);
+        int projectileCountMax = projectileCountMin + _weaponValues[_level].ProjectileCount;
 
         for (int i = projectileCountMin; i < projectileCountMax; i++)
         {
-            Vector2 moveDirection = Quaternion.AngleAxis(_shotProjectileAngleMod * i, Vector3.forward) * direction;
+            Vector2 moveDirection = Quaternion.AngleAxis(_weaponValues[_level].ProjectileAngleMod * i, Vector3.forward) * direction;
             Quaternion spawnRotation = Quaternion.identity;
 
             if (_shotShowToTarget)
@@ -63,8 +75,8 @@ public class WeaponCore : MonoBehaviour
             }
 
             GameObject shot = Instantiate(_shotPrefab, spawnPosition, spawnRotation);
-            shot.GetComponent<WeaponShotCore>().SetStats(_shotDamage, _shotPiercing);
-            shot.GetComponent<WeaponShotMovement>().SetStats(_shotSpeed, _shotRange, moveDirection, null);
+            shot.GetComponent<WeaponShotController>().SetValues(_weaponValues[_level]);
+            shot.GetComponent<WeaponShotMovement>().SetValues(_weaponValues[_level], moveDirection, null);
         }
     }
 

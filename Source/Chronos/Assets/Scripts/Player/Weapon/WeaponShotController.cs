@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class WeaponShotCore : MonoBehaviour
+public class WeaponShotController : MonoBehaviour
 {
-    private int _damage = 1;
+    private int _damage = 10;
     private bool _piercing = true;
 
-    [SerializeField] private bool _lifetimeActive = false;
-    [SerializeField] private float _lifetimeCounter = 0;
+    private bool _lifetimeActive = false;
+    private float _lifetimeCounter = 0;
+
+    private float _knockbackForce = 500;
 
     [SerializeField] private GameObject _effectPrefeb;
 
@@ -33,14 +35,23 @@ public class WeaponShotCore : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             HitEnemy();
-            collision.gameObject.GetComponent<EnemyHealth>().GetDamage(_damage);
+
+            Vector2 enemyDirection = (collision.transform.position - transform.position).normalized;
+            collision.gameObject.GetComponent<EnemyHealth>().GetDamage(_damage, enemyDirection, _knockbackForce);
         }
     }
 
-    public void SetStats(int damage, bool piercing)
+    public void SetValues(WeaponValues weaponValues)
     {
-        _damage = damage;
-        _piercing = piercing;
+        _damage = weaponValues.Damage;
+        _piercing = weaponValues.Piercing;
+        _knockbackForce += weaponValues.KnockbackForce;
+        
+        if (weaponValues.Lifetime > 0)
+        {
+            _lifetimeActive = true;
+            _lifetimeCounter = weaponValues.Lifetime;
+        }
     }
 
     public void HitEnemy()

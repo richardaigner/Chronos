@@ -6,22 +6,22 @@ using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float _moveSpeed = 400;
+    private float _moveSpeed = 200;
     private Vector2 _moveDirection;
 
     private float _dashCooldownCounter = 0;
     private float _dashCooldownLength = 2;
     private float _dashTimeCounter = 0;
-    private float _dashTimeLength = 0.2f;
+    private float _dashTimeLength = 0.3f;
     private float _dashForceCounter = 0;
-    private float _dashForceMax = 2000;
+    private float _dashForceMax = 1000;
     private Vector2 _dashDirection;
 
-    private float _recoilTimeCounter = 0;
-    private float _recoilTimeLength = 0.2f;
-    private float _recoilForceCounter = 0;
-    private float _recoilForceMax = 1000;
-    private Vector2 _recoilDirection;
+    private float _knockbackTimeCounter = 0;
+    private float _knockbackTimeLength = 0.2f;
+    private float _knockbackForceCounter = 0;
+    private float _knockbackForceMax = 1000;
+    private Vector2 _knockbackDirection;
 
     private Rigidbody2D _rigidbody;
     private Animator _animator;
@@ -84,15 +84,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 recoilVelocity = Vector2.zero;
+        Vector2 knockbackVelocity = Vector2.zero;
         Vector2 dashVelocity = Vector2.zero;
 
-        if (_recoilTimeCounter > 0)
+        if (_knockbackTimeCounter > 0)
         {
-            _recoilTimeCounter -= Time.deltaTime;
-            _recoilForceCounter = _recoilForceMax * _recoilTimeCounter * (1 / _recoilTimeLength);
+            _knockbackTimeCounter -= Time.deltaTime;
+            _knockbackForceCounter = _knockbackForceMax * _knockbackTimeCounter * (1 / _knockbackTimeLength);
 
-            recoilVelocity = _recoilDirection * _recoilForceCounter;
+            knockbackVelocity = _knockbackDirection * _knockbackForceCounter;
         }
         
         if (_dashTimeCounter > 0)
@@ -103,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
             dashVelocity = _dashDirection * _dashForceCounter;
         }
         
-        _rigidbody.velocity = _moveDirection * _moveSpeed + recoilVelocity + dashVelocity;
+        _rigidbody.velocity = _moveDirection * _moveSpeed + knockbackVelocity + dashVelocity;
     }
 
     private void Dash()
@@ -113,10 +113,10 @@ public class PlayerMovement : MonoBehaviour
         _dashDirection = _moveDirection;
     }
 
-    public void Recoil(Vector2 fromDirection)
+    public void Knockback(Vector2 fromDirection)
     {
-        _recoilTimeCounter = _recoilTimeLength;
-        _recoilDirection = fromDirection;
+        _knockbackTimeCounter = _knockbackTimeLength;
+        _knockbackDirection = fromDirection;
     }
 }
 
