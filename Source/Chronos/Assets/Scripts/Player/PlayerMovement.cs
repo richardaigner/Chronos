@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class PlayerMovement : MonoBehaviour
 {
     private float _moveSpeed = 200;
+    public float MoveSpeed { get { return _moveSpeed; } set { _moveSpeed = value; } }
     private Vector2 _moveDirection;
 
     private float _dashCooldownCounter = 0;
@@ -14,13 +15,14 @@ public class PlayerMovement : MonoBehaviour
     private float _dashTimeCounter = 0;
     private float _dashTimeLength = 0.3f;
     private float _dashForceCounter = 0;
-    private float _dashForceMax = 1000;
+    private float _dashForce = 1000;
+    public float DashForce { get { return _dashForce; } set { _dashForce = value; } }
     private Vector2 _dashDirection;
 
     private float _knockbackTimeCounter = 0;
     private float _knockbackTimeLength = 0.2f;
     private float _knockbackForceCounter = 0;
-    private float _knockbackForceMax = 1000;
+    private float _knockbackForce = 1000;
     private Vector2 _knockbackDirection;
 
     private Rigidbody2D _rigidbody;
@@ -90,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
         if (_knockbackTimeCounter > 0)
         {
             _knockbackTimeCounter -= Time.deltaTime;
-            _knockbackForceCounter = _knockbackForceMax * _knockbackTimeCounter * (1 / _knockbackTimeLength);
+            _knockbackForceCounter = _knockbackForce * _knockbackTimeCounter * (1 / _knockbackTimeLength);
 
             knockbackVelocity = _knockbackDirection * _knockbackForceCounter;
         }
@@ -98,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         if (_dashTimeCounter > 0)
         {
             _dashTimeCounter -= Time.deltaTime;
-            _dashForceCounter = _dashForceMax * _dashTimeCounter * (1 / _dashTimeLength);
+            _dashForceCounter = _dashForce * _dashTimeCounter * (1 / _dashTimeLength);
 
             dashVelocity = _dashDirection * _dashForceCounter;
         }

@@ -5,12 +5,13 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     private bool _alive = true;
-    private int _health = 20;
+    private int _health = 40;
     private float _deathTimer = 0.25f;
 
     private SpriteRenderer _spriteRenderer;
     private EnemyMovement _enemyMovement;
     [SerializeField] private GameObject _xpPrefab;
+    [SerializeField] private GameObject _deathEffectPrefab;
     
     private void Start()
     {
@@ -43,8 +44,9 @@ public class EnemyHealth : MonoBehaviour
     private void Remove()
     {
         _alive = false;
-
+        
         Instantiate(_xpPrefab, transform.position, Quaternion.identity);
+        Instantiate(_deathEffectPrefab, transform.position, Quaternion.AngleAxis(110, new Vector3(1, 0, 0)));
 
         GetComponent<EnemyMovement>().enabled = false;
         GetComponent<Collider2D>().enabled = false;

@@ -8,7 +8,7 @@ public class UpgradeSelect : MonoBehaviour
     private Vector2[] _upgradeButtonPosition = { new Vector2(0, 60), new Vector2(0, -60), new Vector2(0, -180), new Vector2(0, -300), new Vector2(0, -420) };
     private GameObject[] _upgradeButtons = new GameObject[5];
 
-    [SerializeField] private GameObject[] _possibleUpgrades;
+    [SerializeField] private List<GameObject> _possibleUpgrades;
 
     private void Start()
     {
@@ -17,21 +17,21 @@ public class UpgradeSelect : MonoBehaviour
 
     public void CreateUpgradeButtons()
     {
+        // need to be reworked - i need to get the item ids from the weapon itself to upgrade the right item
+
         int buttonCount = _upgradeButtonCount;
-        if (buttonCount > _possibleUpgrades.Length)
+        if (buttonCount > _possibleUpgrades.Count)
         {
-            buttonCount = _possibleUpgrades.Length;
+            buttonCount = _possibleUpgrades.Count;
         }
 
         int[] randomWeaponIds = new int[buttonCount];
 
         for (int i = 0; i < buttonCount; i++)
         {
-            // todo check if the weapon/item is already max level
-
             do
             {
-                randomWeaponIds[i] = Random.Range(0, _possibleUpgrades.Length);
+                randomWeaponIds[i] = Random.Range(0, _possibleUpgrades.Count);
             } while (IsValueInArray(randomWeaponIds, randomWeaponIds[i], i));
         }
 
@@ -61,6 +61,17 @@ public class UpgradeSelect : MonoBehaviour
         for (int i = 0; i < _upgradeButtonCount; i++)
         {
             Destroy(_upgradeButtons[i]);
+        }
+    }
+
+    public void RemovePossibleUpgrade(int itemId)
+    {
+        for (int i = 0; i < _possibleUpgrades.Count; i++)
+        {
+            if (_possibleUpgrades[i].GetComponent<UpgradeButton>().ItemId == itemId)
+            {
+                _possibleUpgrades.RemoveAt(i);
+            }
         }
     }
 

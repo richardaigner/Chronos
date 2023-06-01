@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _xpPrefab: {fileID: 7952815365217462360, guid: 732d29f7ef0680a4fb776c3de211d966, type: 3}
+  _deathEffectPrefab: {fileID: 8563446244406527133, guid: c375d6f7834b7624d835f88ad694f8f9, type: 3}
 --- !u!114 &1469077735978639760
 MonoBehaviour:
   m_ObjectHideFlags: 0

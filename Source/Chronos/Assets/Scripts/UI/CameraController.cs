@@ -27,4 +27,9 @@ public class CameraController : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, _targetPos, _lerpSpeed * Time.deltaTime);
         }
     }
+
+    public void ShakeScreen()
+    {
+
+    }
 }

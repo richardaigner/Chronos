@@ -36,7 +36,7 @@ public class ItemXp : MonoBehaviour
     {
         float distance = Vector2.Distance(_playerGameObject.transform.position, transform.position);
 
-        if (!_moveToPlayer && distance <= _playerGameObject.GetComponent<PlayerStats>().PickUpRange)
+        if (!_moveToPlayer && distance <= _playerGameObject.GetComponent<PlayerItems>().PickUpRange)
         {
             _moveToPlayer = true;
         }

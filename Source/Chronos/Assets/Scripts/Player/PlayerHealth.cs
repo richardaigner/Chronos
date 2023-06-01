@@ -7,11 +7,12 @@ public class PlayerHealth : MonoBehaviour
 {
     private bool _alive = true;
     private int _curHealth;
-    private int _maxHealth = 10;
+    private int _maxHealth = 5;
 
     private float _regenarationTimeCounter = 0;
     private float _regenerationTimeLength = 10;
-    private int _regenerationValue = 1;
+    private int _regenerationValue = 0;
+    public int RegenerationValue { get { return _regenerationValue; } set { _regenerationValue = value; } }
 
     [SerializeField] private ProgressBar _healthBar;
 
@@ -65,6 +66,13 @@ public class PlayerHealth : MonoBehaviour
             _curHealth = _maxHealth;
         }
 
+        _healthBar.SetProgress(_curHealth, _maxHealth);
+    }
+
+    public void IncreaseMaxHealth(int value)
+    {
+        _curHealth += value;
+        _maxHealth += value;
         _healthBar.SetProgress(_curHealth, _maxHealth);
     }
 

@@ -51,20 +51,20 @@ public class SpawnSequence : MonoBehaviour
     {
         if (_levelName == "Forest")
         {
-            _spawnIntervals.Add(new EnemySpawnInterval("00:00", "03:00", 5, 0, 1, 5));
-            _spawnIntervals.Add(new EnemySpawnInterval("00:00", "06:00", 5, 1, 1, 5));
-            _spawnIntervals.Add(new EnemySpawnInterval("03:00", "06:00", 5, 0, 2, 10));
-            _spawnIntervals.Add(new EnemySpawnInterval("03:00", "09:00", 5, 1, 2, 10));
-            _spawnIntervals.Add(new EnemySpawnInterval("06:00", "09:00", 5, 0, 3, 10));
-            _spawnIntervals.Add(new EnemySpawnInterval("06:00", "12:00", 5, 1, 3, 10));
-            _spawnIntervals.Add(new EnemySpawnInterval("09:00", "15:00", 5, 0, 4, 5));
-            _spawnIntervals.Add(new EnemySpawnInterval("09:00", "15:00", 5, 1, 4, 5));
-            _spawnIntervals.Add(new EnemySpawnInterval("12:00", "15:00", 5, 1, 5, 10));
-            _spawnIntervals.Add(new EnemySpawnInterval("12:00", "15:00", 5, 0, 5, 10));
-            _spawnIntervals.Add(new EnemySpawnInterval("15:00", "30:00", 5, 0, 6, 5));
-            _spawnIntervals.Add(new EnemySpawnInterval("15:00", "30:00", 5, 1, 6, 5));
-            _spawnIntervals.Add(new EnemySpawnInterval("15:00", "30:00", 5, 0, 6, 5));
-            _spawnIntervals.Add(new EnemySpawnInterval("15:00", "30:00", 5, 1, 6, 5));
+            _spawnIntervals.Add(new EnemySpawnInterval("00:00", "03:00", 5, 0, 1, 10));
+            _spawnIntervals.Add(new EnemySpawnInterval("00:00", "06:00", 5, 1, 1, 10));
+            _spawnIntervals.Add(new EnemySpawnInterval("03:00", "06:00", 5, 0, 2, 20));
+            _spawnIntervals.Add(new EnemySpawnInterval("03:00", "09:00", 5, 1, 2, 20));
+            _spawnIntervals.Add(new EnemySpawnInterval("06:00", "09:00", 5, 0, 3, 20));
+            _spawnIntervals.Add(new EnemySpawnInterval("06:00", "12:00", 5, 1, 3, 20));
+            _spawnIntervals.Add(new EnemySpawnInterval("09:00", "15:00", 5, 0, 4, 10));
+            _spawnIntervals.Add(new EnemySpawnInterval("09:00", "15:00", 5, 1, 4, 30));
+            _spawnIntervals.Add(new EnemySpawnInterval("12:00", "15:00", 5, 1, 5, 20));
+            _spawnIntervals.Add(new EnemySpawnInterval("12:00", "15:00", 5, 0, 5, 30));
+            _spawnIntervals.Add(new EnemySpawnInterval("15:00", "30:00", 5, 0, 6, 10));
+            _spawnIntervals.Add(new EnemySpawnInterval("15:00", "30:00", 5, 1, 6, 20));
+            _spawnIntervals.Add(new EnemySpawnInterval("15:00", "30:00", 5, 0, 6, 20));
+            _spawnIntervals.Add(new EnemySpawnInterval("15:00", "30:00", 5, 1, 6, 30));
         }
     }
 }

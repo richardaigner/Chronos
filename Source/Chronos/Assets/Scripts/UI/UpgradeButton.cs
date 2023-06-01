@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour
 {
-    [SerializeField] private int _weaponId = 0;
+    [SerializeField] private int _itemId = 0;
+    public int ItemId { get { return _itemId; } }
 
     private int _buttonNum = 1;
     [SerializeField] private string _itemName = "";
@@ -15,18 +15,21 @@ public class UpgradeButton : MonoBehaviour
     private Button _button;
     private UpgradeSelect _upgradeSelect;
 
+    [SerializeField] private GameObject _iconPrefab;
+
     private void Start()
     {
         _button = GetComponent<Button>();
         _button.onClick.AddListener(OnClick);
+        GameObject icon =  Instantiate(_iconPrefab, this.transform);
+        icon.transform.localPosition = new Vector2(-120, 0);
     }
 
     private void Update()
     {
         if (Input.GetAxisRaw("Select" + _buttonNum) == 1)
         {
-            UpgradeWeapon();
-            _upgradeSelect.HideUpgradeWindow();
+            Upgrade();
         }
     }
 
@@ -36,26 +39,28 @@ public class UpgradeButton : MonoBehaviour
         _upgradeSelect = upgradeSelect;
 
         string itemText;
-        int playerWeaponLevel = GameObject.Find("Player").GetComponent<PlayerWeapon>().Weapons[_weaponId].Level;
-        if (playerWeaponLevel == 0)
+        int itemLevel = GameObject.Find("Player").GetComponent<PlayerItems>().GetItemLevel(_itemId);
+        
+        if (itemLevel == 0)
         {
-            itemText = "Collect new weapon -> " + _itemName;
+            itemText = "Equip new item -> " + _itemName;
         }
         else
         {
-            itemText = "Upgrade " + _itemName + " to level " + (playerWeaponLevel + 1);
+            itemText = "Upgrade " + _itemName + " to level " + (itemLevel + 1);
         }
         _text.text = _buttonNum + ". " + itemText;
     }
 
     private void OnClick()
     {
-        UpgradeWeapon();
-        _upgradeSelect.HideUpgradeWindow();
+        Upgrade();
     }
 
-    public void UpgradeWeapon()
+    public void Upgrade()
     {
-        GameObject.Find("Player").GetComponent<PlayerWeapon>().UpgradeWeapon(_weaponId);
+        GameObject.Find("Player").GetComponent<PlayerItems>().UpgradeItem(_itemId);
+
+        _upgradeSelect.HideUpgradeWindow();
     }
 }

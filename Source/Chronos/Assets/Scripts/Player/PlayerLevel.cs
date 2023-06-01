@@ -7,7 +7,7 @@ public class PlayerLevel : MonoBehaviour
 {
     private int _level = 1;
     private int _currentXp = 0;
-    private int _levelUpXp = 5;
+    private int _levelUpXp = 20;
     private float _levelUpXpIncreaseFactor = 1.2f;
 
     [SerializeField] private XpBar _uiXpBar;
