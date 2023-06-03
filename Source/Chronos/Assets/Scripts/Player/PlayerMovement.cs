@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float _moveSpeed = 200;
+    private float _moveSpeed = 250;
     public float MoveSpeed { get { return _moveSpeed; } set { _moveSpeed = value; } }
     private Vector2 _moveDirection;
 
@@ -25,12 +24,14 @@ public class PlayerMovement : MonoBehaviour
     private float _knockbackForce = 1000;
     private Vector2 _knockbackDirection;
 
+    private Collider2D _collider;
     private Rigidbody2D _rigidbody;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
+        _collider = GetComponent<Collider2D>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -95,6 +96,11 @@ public class PlayerMovement : MonoBehaviour
             _knockbackForceCounter = _knockbackForce * _knockbackTimeCounter * (1 / _knockbackTimeLength);
 
             knockbackVelocity = _knockbackDirection * _knockbackForceCounter;
+
+            if (_knockbackTimeCounter <= 0)
+            {
+                gameObject.layer = LayerMask.NameToLayer("Player");
+            }
         }
         
         if (_dashTimeCounter > 0)
@@ -103,6 +109,11 @@ public class PlayerMovement : MonoBehaviour
             _dashForceCounter = _dashForce * _dashTimeCounter * (1 / _dashTimeLength);
 
             dashVelocity = _dashDirection * _dashForceCounter;
+
+            if (_dashTimeCounter <= 0)
+            {
+                gameObject.layer = LayerMask.NameToLayer("Player");
+            }
         }
         
         _rigidbody.velocity = _moveDirection * _moveSpeed + knockbackVelocity + dashVelocity;
@@ -110,6 +121,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dash()
     {
+        gameObject.layer = LayerMask.NameToLayer("PlayerKnockback");
         _dashCooldownCounter = _dashCooldownLength;
         _dashTimeCounter = _dashTimeLength;
         _dashDirection = _moveDirection;
@@ -117,6 +129,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Knockback(Vector2 fromDirection)
     {
+        gameObject.layer = LayerMask.NameToLayer("PlayerKnockback");
         _knockbackTimeCounter = _knockbackTimeLength;
         _knockbackDirection = fromDirection;
     }

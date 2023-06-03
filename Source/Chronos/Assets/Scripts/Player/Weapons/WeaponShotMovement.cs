@@ -63,16 +63,19 @@ public class WeaponShotMovement : MonoBehaviour
             _direction = (targetPosition - new Vector2(transform.position.x, transform.position.y)).normalized;
         }
         
-        if (_circularDistance > 0)
+        if (_circularOrigin != null)
         {
-            _direction = Quaternion.AngleAxis(_moveSpeed * Time.timeScale, Vector3.forward) * _direction;
-            _direction = _direction.normalized;
-            Vector2 position = _circularOrigin.position;
-            transform.position = position + _direction * _circularDistance + _playerCenterModifier;
-        }
-        else
-        {
-            _rigidbody.velocity = _direction * _moveSpeed;
+            if (_circularDistance > 0)
+            {
+                _direction = Quaternion.AngleAxis(_moveSpeed * Time.timeScale, Vector3.forward) * _direction;
+                _direction = _direction.normalized;
+                Vector2 position = _circularOrigin.position;
+                transform.position = position + _direction * _circularDistance + _playerCenterModifier;
+            }
+            else
+            {
+                _rigidbody.velocity = _direction * _moveSpeed;
+            }
         }
     }
 

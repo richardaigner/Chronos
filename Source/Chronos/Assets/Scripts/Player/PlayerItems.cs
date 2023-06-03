@@ -65,6 +65,11 @@ public class PlayerItems : MonoBehaviour
         }
     }
 
+    public void AddRandomWeapon()
+    {
+        GetWeapon(Random.Range(0, 7)).Upgrade();
+    }
+
     public WeaponController GetWeapon(int itemId)
     {
         for (int i = 0; i < _weapons.Length; i++)

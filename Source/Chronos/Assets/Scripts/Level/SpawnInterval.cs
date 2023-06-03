@@ -5,7 +5,7 @@ public class EnemySpawnInterval
     private float _endTime;
     private float _spawnInterval;
     private int _enemyId;
-    private int _enemyLevel;
+    private int _enemyHealth;
     private int _enemyAmount;
 
     public float NextSpawnTime { get { return _nextSpawnTime; } set { _nextSpawnTime = value; } }
@@ -13,21 +13,21 @@ public class EnemySpawnInterval
     public float EndTime { get { return _endTime; } }
     public float SpawnInterval { get { return _spawnInterval; } }
     public int EnemyId { get { return _enemyId; } }
-    public int EnemyLevel { get { return _enemyLevel; } }
+    public int EnemyHealth { get { return _enemyHealth; } }
     public int EnemyAmount { get { return _enemyAmount; } }
 
-    public EnemySpawnInterval(float startTime, float endTime, float spawnInterval, int enemyId, int enemyLevel, int enemyAmount)
+    public EnemySpawnInterval(float startTime, float endTime, float spawnInterval, int enemyId, int enemyHealth, int enemyAmount)
     {
         _nextSpawnTime = startTime;
         _startTime = startTime;
         _endTime = endTime;
         _spawnInterval = spawnInterval;
         _enemyId = enemyId;
-        _enemyLevel = enemyLevel;
+        _enemyHealth = enemyHealth;
         _enemyAmount = enemyAmount;
     }
 
-    public EnemySpawnInterval(string startTime, string endTime, float spawnInterval, int enemyId, int enemyLevel, int enemyAmount): this(ParseTimeString(startTime), ParseTimeString(endTime), spawnInterval, enemyId, enemyLevel, enemyAmount) { }
+    public EnemySpawnInterval(string startTime, string endTime, float spawnInterval, int enemyId, int enemyHealth, int enemyAmount): this(ParseTimeString(startTime), ParseTimeString(endTime), spawnInterval, enemyId, enemyHealth, enemyAmount) { }
 
     private static float ParseTimeString(string time)
     {

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class EquipmentController : MonoBehaviour
 {
-    private bool _active = false;
     [SerializeField] private int _itemId = 0;
     public int ItemId { get { return _itemId; } }
 
@@ -40,7 +39,6 @@ public class EquipmentController : MonoBehaviour
 
     private void Activate()
     {
-        _active = true;
         // TODO after activaten create a icon to show that the weapon is equipt
     }
 

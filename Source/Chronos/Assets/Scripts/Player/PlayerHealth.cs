@@ -14,7 +14,14 @@ public class PlayerHealth : MonoBehaviour
     private int _regenerationValue = 0;
     public int RegenerationValue { get { return _regenerationValue; } set { _regenerationValue = value; } }
 
+    private float _invincibleCounter = 0;
+    private float _invincibleLength = 1;
+
     [SerializeField] private ProgressBar _healthBar;
+    [SerializeField] private SpawnSequence _spawnSequence;
+    [SerializeField] private InfoText _uiInfoTextMain;
+    [SerializeField] private InfoText _uiInfoText;
+    [SerializeField] private GameObject _deathEffectPrefab;
 
     private void Start()
     {
@@ -26,6 +33,7 @@ public class PlayerHealth : MonoBehaviour
     private void Update()
     {
         Regeneration();
+        UpdateInvincible();
     }
 
     private void Regeneration()
@@ -42,13 +50,33 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    private void UpdateInvincible()
+    {
+        if (_invincibleCounter > 0)
+        {
+            _invincibleCounter -= Time.deltaTime;
+        }
+    }
+
+    public bool IsInvincible()
+    {
+        if (_invincibleCounter > 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public void GetDamage(int value, Vector2 fromDirection)
     {
-        if (_alive)
+        if (_alive && _invincibleCounter <= 0)
         {
             _curHealth -= value;
             _healthBar.SetProgress(_curHealth, _maxHealth);
             GetComponent<PlayerMovement>().Knockback(fromDirection);
+            _invincibleCounter = _invincibleLength;
+            GameObject.Find("MainCamera").GetComponent<CameraController>().StartScreenShake(0.3f, 0.05f, 15);
 
             if (_curHealth <= 0)
             {
@@ -79,6 +107,18 @@ public class PlayerHealth : MonoBehaviour
     private void Remove()
     {
         _alive = false;
-        this.gameObject.SetActive(false);
+
+        for (int i = 0; i < 20; i++)
+        {
+            Vector2 position = transform.position;
+            Vector2 rndPosition = new Vector2(Random.Range(-200, 200), Random.Range(-200, 200));
+            Instantiate(_deathEffectPrefab, position + rndPosition, Quaternion.identity);
+        }
+
+        GameObject.Find("MainCamera").GetComponent<CameraController>().StartScreenShake(0.5f, 0.05f, 30);
+        _uiInfoTextMain.ShowText(1, 1000, "GAMEOVER");
+        _uiInfoText.ShowText(2, 1000, "REST IN PEACE");
+        _spawnSequence.StopTime();
+        Destroy(gameObject);
     }
 }

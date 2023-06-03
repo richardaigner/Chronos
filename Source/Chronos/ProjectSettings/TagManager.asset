@@ -14,12 +14,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Tilemap
   - Player
   - PlayerShot
   - Enemy
-  - 
-  - 
+  - EnemyShot
+  - PlayerKnockback
   - 
   - 
   - 

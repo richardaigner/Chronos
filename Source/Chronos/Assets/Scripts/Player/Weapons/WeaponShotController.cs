@@ -8,10 +8,13 @@ public class WeaponShotController : MonoBehaviour
     private bool _piercing = true;
     private bool _bouncing = false;
 
+    private float _damageIntervalCounter = 0;
+    private float _damageIntervalLength = 0.1f;
+
     private bool _lifetimeActive = false;
     private float _lifetimeCounter = 0;
 
-    private float _knockbackForce = 500;
+    private float _knockbackForce = 5000;
 
     private WeaponShotMovement _movement;
     [SerializeField] private GameObject _effectPrefeb;
@@ -34,16 +37,22 @@ public class WeaponShotController : MonoBehaviour
                 Remove();
             }
         }
+
+        if (_damageIntervalCounter > 0)
+        {
+            _damageIntervalCounter -= Time.deltaTime;
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (_damageIntervalCounter <= 0 && collision.gameObject.CompareTag("Enemy"))
         {
+            _damageIntervalCounter = _damageIntervalLength;
             HitEnemy();
 
             Vector2 enemyDirection = (collision.transform.position - transform.position).normalized;
-            collision.gameObject.GetComponent<EnemyHealth>().GetDamage(_damage, enemyDirection, _knockbackForce);
+            collision.gameObject.GetComponent<EnemyController>().GetDamage(_damage, enemyDirection, _knockbackForce);
 
             if (_bouncing)
             {

@@ -293,6 +293,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 695444602736381860}
+  _spawnSequence: {fileID: 0}
+  _uiGameOverText: {fileID: 0}
+  _uiInfoText: {fileID: 0}
+  _deathEffectPrefab: {fileID: 8563446244406527133, guid: c375d6f7834b7624d835f88ad694f8f9, type: 3}
 --- !u!114 &38255126059257886
 MonoBehaviour:
   m_ObjectHideFlags: 0

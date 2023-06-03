@@ -5,10 +5,19 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] private float _spawnBorderUp = 1000;
+    [SerializeField] private float _spawnBorderRight = 2000;
+    [SerializeField] private float _spawnBorderDown = -1000;
+    [SerializeField] private float _spawnBorderLeft = -2000;
+
+    [SerializeField] private Vector2 _spawnRangeHorizontal;
+    [SerializeField] private Vector2 _spawnRangeVertical;
+
     [SerializeField] private Camera _camera;
+    [SerializeField] private Transform _playerTransform;
     [SerializeField] private GameObject[] _enemyPrefabs;
 
-    public void SpawnEnemies(int enemyId, int enemyLevel, int enemyAmount)
+    public void SpawnEnemies(int enemyId, int enemyHealth, int enemyAmount)
     {
         Vector2 spawnPosition = _camera.transform.position + GetSpawnPosition();
 
@@ -19,42 +28,94 @@ public class EnemySpawner : MonoBehaviour
                 int spawnField = 100;
                 Vector2 mod = new Vector2(Random.Range(-spawnField, spawnField), Random.Range(-spawnField, spawnField));
                 GameObject enemy = Instantiate(_enemyPrefabs[enemyId], spawnPosition + mod, Quaternion.identity);
-                enemy.GetComponent<EnemyLevel>().SetLevel(enemyLevel);
+                enemy.GetComponent<EnemyController>().Health = enemyHealth;
             }
         }
     }
 
     private Vector3 GetSpawnPosition()
     {
-        Vector2 randomPosition;
+        Vector2 randomPosition = Vector2.zero;
 
-        if (Random.Range(0, 2) == 0) // x oder y
+        bool positionFound = false;
+        while (!positionFound)
         {
-            if (Random.Range(0, 2) == 0)
-            {
-                randomPosition = new Vector3(0, -550, 0);
-            }
-            else
-            {
-                randomPosition = new Vector3(0,  550, 0);
-            }
+            int rndDirectionSelect = Random.Range(0, 3);
 
-            randomPosition = new Vector3(Random.Range(-1100, 1100), randomPosition.y, 0);
+            if (rndDirectionSelect == 0 && !(_playerTransform.position.y > _spawnBorderUp))
+            {
+                float minRange = _spawnRangeHorizontal.x;
+                float maxRange = _spawnRangeHorizontal.y;
+
+                // left or right
+                if (_playerTransform.position.x < _spawnBorderLeft)
+                {
+                    minRange = 0;
+                }
+                else if (_playerTransform.position.x > _spawnBorderRight)
+                {
+                    maxRange = 0;
+                }
+
+                randomPosition = new Vector2(Random.Range(minRange, maxRange), 600);
+                positionFound = true;
+            }
+            else if (rndDirectionSelect == 1 && !(_playerTransform.position.x > _spawnBorderRight))
+            {
+                float minRange = _spawnRangeVertical.x;
+                float maxRange = _spawnRangeVertical.y;
+
+                // up or down
+                if (_playerTransform.position.y < _spawnBorderDown)
+                {
+                    minRange = 0;
+                }
+                else if (_playerTransform.position.y > _spawnBorderUp)
+                {
+                    maxRange = 0;
+                }
+
+                randomPosition = new Vector2(1100, Random.Range(minRange, maxRange));
+                positionFound = true;
+            }
+            else if (rndDirectionSelect == 2 && !(_playerTransform.position.y < _spawnBorderDown))
+            {
+                float minRange = _spawnRangeHorizontal.x;
+                float maxRange = _spawnRangeHorizontal.y;
+
+                // left or right
+                if (_playerTransform.position.x < _spawnBorderLeft)
+                {
+                    minRange = 0;
+                }
+                else if (_playerTransform.position.x > _spawnBorderRight)
+                {
+                    maxRange = 0;
+                }
+
+                randomPosition = new Vector2(Random.Range(minRange, maxRange), -600);
+                positionFound = true;
+            }
+            else if (rndDirectionSelect == 3 && !(_playerTransform.position.x < _spawnBorderLeft))
+            {
+                float minRange = _spawnRangeVertical.x;
+                float maxRange = _spawnRangeVertical.y;
+
+                // up or down
+                if (_playerTransform.position.y < _spawnBorderDown)
+                {
+                    minRange = 0;
+                }
+                else if (_playerTransform.position.y > _spawnBorderUp)
+                {
+                    maxRange = 0;
+                }
+
+                randomPosition = new Vector2(-1100, Random.Range(minRange, maxRange));
+                positionFound = true;
+            }
         }
-        else
-        {
-            if (Random.Range(0, 2) == 0)
-            {
-                randomPosition = new Vector3(-1000, 0, 0);
-            }
-            else
-            {
-                randomPosition = new Vector3( 1000, 0, 0);
-            }
-
-            randomPosition = new Vector3(randomPosition.x, Random.Range(-600, 600), 0);
-        }
-
+        
         return randomPosition;
     }
 }

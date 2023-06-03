@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7952815365217462358}
   - component: {fileID: 7952815365217462359}
   - component: {fileID: 7952815365217462355}
-  - component: {fileID: 7952815365217462357}
   - component: {fileID: 2157245144257021479}
+  - component: {fileID: 8333343339730664060}
   m_Layer: 0
   m_Name: ItemXp
   m_TagString: Xp
@@ -113,19 +113,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.35, y: 0.41999996}
   m_EdgeRadius: 0
---- !u!114 &7952815365217462357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7952815365217462360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe5a945f87d76154abc262889074ff08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _destroyEffectPrefeb: {fileID: 7957126942274280821, guid: 23c6b22b02d394749bef4da6c423dc37, type: 3}
 --- !u!114 &2157245144257021479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,3 +127,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ySortingOffset: 0
   ySortingOffsetObject: {fileID: 0}
+--- !u!114 &8333343339730664060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7952815365217462360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61598b967dc8aef4a9baee8f83116834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _value: 1
+  _itemXp: 1
+  _itemKey: 0
+  _itemChest: 0
+  _destroyEffectPrefeb: {fileID: 7957126942274280821, guid: 23c6b22b02d394749bef4da6c423dc37, type: 3}
