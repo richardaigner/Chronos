@@ -11464,6 +11464,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &698773713 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1059137121, guid: 8c0cfd413d19dbf4eb662b97f8f76e25, type: 3}
+  m_PrefabInstance: {fileID: 5846349110283943096}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace28ea51ab608542a084d48390f1ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &911821230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11761,6 +11772,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf0a207aa886a244bf4b1a4ab99a378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnSideUp: 1
+  _spawnSideRight: 1
+  _spawnSideDown: 1
+  _spawnSideLeft: 1
   _spawnBorderUp: 1000
   _spawnBorderRight: 2000
   _spawnBorderDown: -1000
@@ -131181,6 +131196,10 @@ PrefabInstance:
       propertyPath: _spawnSequence
       value: 
       objectReference: {fileID: 1901134708}
+    - target: {fileID: 38255126059257885, guid: fe65bc17e32af7544ae5beec20077370, type: 3}
+      propertyPath: _gameController
+      value: 
+      objectReference: {fileID: 698773713}
     - target: {fileID: 38255126059257885, guid: fe65bc17e32af7544ae5beec20077370, type: 3}
       propertyPath: _uiGameOverText
       value: 

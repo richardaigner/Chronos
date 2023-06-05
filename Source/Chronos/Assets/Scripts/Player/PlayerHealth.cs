@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private SpawnSequence _spawnSequence;
     [SerializeField] private InfoText _uiInfoTextMain;
     [SerializeField] private InfoText _uiInfoText;
+    [SerializeField] private GameController _gameController;
     [SerializeField] private GameObject _deathEffectPrefab;
 
     private void Start()
@@ -116,9 +118,8 @@ public class PlayerHealth : MonoBehaviour
         }
 
         GameObject.Find("MainCamera").GetComponent<CameraController>().StartScreenShake(0.5f, 0.05f, 30);
-        _uiInfoTextMain.ShowText(1, 1000, "GAMEOVER");
-        _uiInfoText.ShowText(2, 1000, "REST IN PEACE");
         _spawnSequence.StopTime();
+        _gameController.SetGameOver();
         Destroy(gameObject);
     }
 }

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    private bool _gameOver = false;
+
     [SerializeField] private InfoText _uiInfoTextMain;
     [SerializeField] private InfoText _uiInfoText;
 
@@ -20,18 +23,25 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Escape") && Time.timeScale == 1)
+        if (!_gameOver && Input.GetButtonDown("Escape") && Time.timeScale == 1)
         {
             PauseGame();
         }
-        else if (Input.GetButtonDown("Escape") && Time.timeScale == 0)
+        else if (!_gameOver && Input.GetButtonDown("Escape") && Time.timeScale == 0)
         {
             UnPauseGame();
         }
-        else if (Input.GetButtonDown("q") && Time.timeScale == 0)
+        else if (!_gameOver && Input.GetButtonDown("Quit") && Time.timeScale == 0)
         {
-            // todo -> quit -> go back to main menu
-            Debug.Log("todo -> quit -> go back to main menu");
+            SceneManager.LoadScene("Menu");
+        }
+        else if (_gameOver && (Input.GetButtonDown("Escape") || Input.GetButtonDown("Quit")))
+        {
+            SceneManager.LoadScene("Menu");
+        }
+        else if (_gameOver && Input.GetButtonDown("Restart"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
@@ -47,5 +57,12 @@ public class GameController : MonoBehaviour
         _uiInfoTextMain.HideText();
         _uiInfoText.HideText();
         Time.timeScale = 1;
+    }
+
+    public void SetGameOver()
+    {
+        _gameOver = true;
+        _uiInfoTextMain.ShowText(1, 100000, "GAMEOVER");
+        _uiInfoText.ShowText(2, 100000,"press r to restart | press esc to quit");
     }
 }

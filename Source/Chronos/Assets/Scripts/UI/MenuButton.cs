@@ -18,8 +18,14 @@ public class MenuButton : MonoBehaviour
     private void Start()
     {
         _text = GetComponent<Text>();
+        _button = GetComponent<Button>();
+        _button.onClick.AddListener(OnClick);
 
-        if (!_active )
+        if (_active )
+        {
+            _text.color = new Color(1, 1, 1, 1);
+        }
+        else
         {
             _text.color = new Color(1, 1, 1, 0.5f);
         }

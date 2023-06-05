@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] private bool _spawnSideUp = true;
+    [SerializeField] private bool _spawnSideRight = true;
+    [SerializeField] private bool _spawnSideDown = true;
+    [SerializeField] private bool _spawnSideLeft = true;
+
     [SerializeField] private float _spawnBorderUp = 1000;
     [SerializeField] private float _spawnBorderRight = 2000;
     [SerializeField] private float _spawnBorderDown = -1000;
@@ -12,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private Vector2 _spawnRangeHorizontal;
     [SerializeField] private Vector2 _spawnRangeVertical;
+
 
     [SerializeField] private Camera _camera;
     [SerializeField] private Transform _playerTransform;
@@ -40,9 +46,9 @@ public class EnemySpawner : MonoBehaviour
         bool positionFound = false;
         while (!positionFound)
         {
-            int rndDirectionSelect = Random.Range(0, 3);
+            int rndDirectionSelect = Random.Range(0, 4);
 
-            if (rndDirectionSelect == 0 && !(_playerTransform.position.y > _spawnBorderUp))
+            if (_spawnSideUp && rndDirectionSelect == 0 && !(_playerTransform.position.y > _spawnBorderUp))
             {
                 float minRange = _spawnRangeHorizontal.x;
                 float maxRange = _spawnRangeHorizontal.y;
@@ -60,7 +66,7 @@ public class EnemySpawner : MonoBehaviour
                 randomPosition = new Vector2(Random.Range(minRange, maxRange), 600);
                 positionFound = true;
             }
-            else if (rndDirectionSelect == 1 && !(_playerTransform.position.x > _spawnBorderRight))
+            else if (_spawnSideRight && rndDirectionSelect == 1 && !(_playerTransform.position.x > _spawnBorderRight))
             {
                 float minRange = _spawnRangeVertical.x;
                 float maxRange = _spawnRangeVertical.y;
@@ -78,7 +84,7 @@ public class EnemySpawner : MonoBehaviour
                 randomPosition = new Vector2(1100, Random.Range(minRange, maxRange));
                 positionFound = true;
             }
-            else if (rndDirectionSelect == 2 && !(_playerTransform.position.y < _spawnBorderDown))
+            else if (_spawnSideDown && rndDirectionSelect == 2 && !(_playerTransform.position.y < _spawnBorderDown))
             {
                 float minRange = _spawnRangeHorizontal.x;
                 float maxRange = _spawnRangeHorizontal.y;
@@ -96,7 +102,7 @@ public class EnemySpawner : MonoBehaviour
                 randomPosition = new Vector2(Random.Range(minRange, maxRange), -600);
                 positionFound = true;
             }
-            else if (rndDirectionSelect == 3 && !(_playerTransform.position.x < _spawnBorderLeft))
+            else if (_spawnSideLeft && rndDirectionSelect == 3 && !(_playerTransform.position.x < _spawnBorderLeft))
             {
                 float minRange = _spawnRangeVertical.x;
                 float maxRange = _spawnRangeVertical.y;

@@ -204,8 +204,9 @@ GameObject:
   - component: {fileID: 45183311}
   - component: {fileID: 45183310}
   - component: {fileID: 45183308}
+  - component: {fileID: 45183312}
   m_Layer: 5
-  m_Name: Start
+  m_Name: LevelSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,7 +230,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -20}
-  m_SizeDelta: {x: 500, y: 120}
+  m_SizeDelta: {x: 800, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &45183308
 MonoBehaviour:
@@ -308,7 +309,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Start
+  m_Text: Goto Level Select
 --- !u!222 &45183311
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -317,6 +318,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45183306}
   m_CullTransparentMesh: 1
+--- !u!114 &45183312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45183306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8835963cb18f57e45875f8098a43e285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _active: 1
+  _nextScene: LevelSelect
+  _quitButton: 0
 --- !u!1 &354241157
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,8 +345,9 @@ GameObject:
   - component: {fileID: 354241161}
   - component: {fileID: 354241160}
   - component: {fileID: 354241163}
+  - component: {fileID: 354241162}
   m_Layer: 5
-  m_Name: Options
+  m_Name: ResetProgress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,7 +371,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -263}
-  m_SizeDelta: {x: 500, y: 120}
+  m_SizeDelta: {x: 800, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &354241160
 MonoBehaviour:
@@ -369,7 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -389,7 +406,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Options
+  m_Text: '-'
 --- !u!222 &354241161
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -398,6 +415,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 354241157}
   m_CullTransparentMesh: 1
+--- !u!114 &354241162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354241157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8835963cb18f57e45875f8098a43e285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _active: 0
+  _nextScene: 
+  _quitButton: 0
 --- !u!114 &354241163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,7 +455,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -454,7 +486,6 @@ GameObject:
   - component: {fileID: 1320432582}
   - component: {fileID: 1320432581}
   - component: {fileID: 1320432580}
-  - component: {fileID: 1320432584}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -549,22 +580,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1320432584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1320432579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd2e47d2c41d5ea4cabd183f353d63f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _button1: {fileID: 45183308}
-  _button2: {fileID: 1836346642}
-  _button3: {fileID: 354241163}
-  _button4: {fileID: 1878283769}
 --- !u!1 &1328015138
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,8 +785,9 @@ GameObject:
   - component: {fileID: 1836346640}
   - component: {fileID: 1836346639}
   - component: {fileID: 1836346642}
+  - component: {fileID: 1836346641}
   m_Layer: 5
-  m_Name: Upgrades
+  m_Name: Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -795,7 +811,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -143}
-  m_SizeDelta: {x: 500, y: 120}
+  m_SizeDelta: {x: 800, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1836346639
 MonoBehaviour:
@@ -810,7 +826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -830,7 +846,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Upgrades
+  m_Text: '-'
 --- !u!222 &1836346640
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -839,6 +855,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836346636}
   m_CullTransparentMesh: 1
+--- !u!114 &1836346641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836346636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8835963cb18f57e45875f8098a43e285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _active: 0
+  _nextScene: 
+  _quitButton: 0
 --- !u!114 &1836346642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,7 +895,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -895,8 +926,9 @@ GameObject:
   - component: {fileID: 1878283767}
   - component: {fileID: 1878283766}
   - component: {fileID: 1878283769}
+  - component: {fileID: 1878283768}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -955,7 +987,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Quit
+  m_Text: Back
 --- !u!222 &1878283767
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -964,6 +996,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878283763}
   m_CullTransparentMesh: 1
+--- !u!114 &1878283768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878283763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8835963cb18f57e45875f8098a43e285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _active: 1
+  _nextScene: Menu
+  _quitButton: 0
 --- !u!114 &1878283769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -989,7 +1036,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
