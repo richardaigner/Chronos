@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
 {
     private bool _alive = true;
     private int _curHealth;
-    private int _maxHealth = 5;
+    private int _maxHealth = 3;
 
     private float _regenarationTimeCounter = 0;
     private float _regenerationTimeLength = 10;

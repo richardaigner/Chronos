@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-
     private Vector3 _offset;
     private Vector3 _targetPos;
-    private float _lerpSpeed = 8.0f;
+
+    private float _lerpSpeed = 8;
+
+    private float _noTargetMoveSpeedCur = 1;
+    private float _noTargetMoveSpeedTarget = 1;
+    private float _noTargetMoveSpeedMin = -1;
+    private float _noTargetMoveSpeedMax = 1;
+    private float _noTargetDistanceCur = 0;
+    [SerializeField] private float _noTargetDistanceTarget = 300;
 
     private float _screenShakeDuration = 0;
     private float _screenShakeCounter = 0;
@@ -30,6 +37,30 @@ public class CameraController : MonoBehaviour
         {
             _targetPos = _target.position + _offset;
             transform.position = Vector3.Lerp(transform.position, _targetPos, _lerpSpeed * Time.deltaTime);
+        }
+        else
+        {
+            _noTargetDistanceCur += _noTargetMoveSpeedCur * Time.deltaTime;
+            
+            if (_noTargetMoveSpeedTarget > 0 && _noTargetDistanceCur > _noTargetDistanceTarget || _noTargetMoveSpeedTarget < 0 && _noTargetDistanceCur < -_noTargetDistanceTarget)
+            {
+                _noTargetMoveSpeedTarget *= -1;
+            }
+            if (_noTargetMoveSpeedCur < _noTargetMoveSpeedTarget || _noTargetMoveSpeedCur > _noTargetMoveSpeedTarget)
+            {
+                _noTargetMoveSpeedCur += _noTargetMoveSpeedTarget * Time.deltaTime;
+            }
+
+            if (_noTargetMoveSpeedCur < _noTargetMoveSpeedMin)
+            {
+                _noTargetMoveSpeedCur = _noTargetMoveSpeedMin;
+            }
+            if (_noTargetMoveSpeedCur > _noTargetMoveSpeedMax)
+            {
+                _noTargetMoveSpeedCur = _noTargetMoveSpeedMax;
+            }
+
+            transform.position = Vector3.Lerp(transform.position, transform.position + new Vector3(_noTargetMoveSpeedCur, -_noTargetMoveSpeedCur), _lerpSpeed * Time.deltaTime);
         }
 
         UpdateScreenShake();

@@ -131321,6 +131321,10 @@ PrefabInstance:
       propertyPath: _spawnSequence
       value: 
       objectReference: {fileID: 1901134708}
+    - target: {fileID: 5846349110625768755, guid: 8c0cfd413d19dbf4eb662b97f8f76e25, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c0cfd413d19dbf4eb662b97f8f76e25, type: 3}
 --- !u!1001 &6393242002744984865
@@ -131439,5 +131443,9 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 1575819120}
+    - target: {fileID: 8514255335842760913, guid: 946ba265d2fcb3f418c84024c3c0aa7a, type: 3}
+      propertyPath: _noTargetDistanceTarget
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 946ba265d2fcb3f418c84024c3c0aa7a, type: 3}
