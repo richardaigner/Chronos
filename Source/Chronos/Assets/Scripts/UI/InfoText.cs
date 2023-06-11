@@ -49,6 +49,7 @@ public class InfoText : MonoBehaviour
     {
         _text.color = new Color(1, 1, 1, 1);
         _text.text = text;
+        _active = false;
     }
 
     public void ShowText(float fadeTime, float showTime, string text)

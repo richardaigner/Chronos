@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,8 +10,8 @@ public class PlayerHealth : MonoBehaviour
     private int _maxHealth = 3;
 
     private float _regenarationTimeCounter = 0;
-    private float _regenerationTimeLength = 10;
-    private int _regenerationValue = 0;
+    private float _regenerationTimeLength = 30;
+    private int _regenerationValue = 1;
     public int RegenerationValue { get { return _regenerationValue; } set { _regenerationValue = value; } }
 
     private float _invincibleCounter = 0;
@@ -23,6 +22,9 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private InfoText _uiInfoTextMain;
     [SerializeField] private InfoText _uiInfoText;
     [SerializeField] private GameController _gameController;
+
+    [SerializeField] private AudioSource _getDamageAudioSource;
+    [SerializeField] private GameObject _deathSoundPrefab;
     [SerializeField] private GameObject _deathEffectPrefab;
 
     private void Start()
@@ -75,6 +77,7 @@ public class PlayerHealth : MonoBehaviour
         if (_alive && _invincibleCounter <= 0)
         {
             _curHealth -= value;
+            _getDamageAudioSource.Play();
             _healthBar.SetProgress(_curHealth, _maxHealth);
             GetComponent<PlayerMovement>().Knockback(fromDirection);
             _invincibleCounter = _invincibleLength;
@@ -117,6 +120,7 @@ public class PlayerHealth : MonoBehaviour
             Instantiate(_deathEffectPrefab, position + rndPosition, Quaternion.identity);
         }
 
+        Instantiate(_deathSoundPrefab, transform.position, Quaternion.identity);
         GameObject.Find("MainCamera").GetComponent<CameraController>().StartScreenShake(0.5f, 0.05f, 30);
         _spawnSequence.StopTime();
         _gameController.SetGameOver();

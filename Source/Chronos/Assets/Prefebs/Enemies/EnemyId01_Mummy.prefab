@@ -206,8 +206,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99153964d20125846ae51b0aa8320124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xpPrefab: {fileID: 7952815365217462360, guid: 732d29f7ef0680a4fb776c3de211d966, type: 3}
+  _dropTable:
+  - {fileID: 7952815365217462360, guid: 732d29f7ef0680a4fb776c3de211d966, type: 3}
+  _damageArea: 0
+  _damageAreaLength: 4
+  _doubleShot: 0
+  _damageAreaPrefab: {fileID: 0}
   _deathEffectPrefab: {fileID: 8563446244406527133, guid: c375d6f7834b7624d835f88ad694f8f9, type: 3}
+  _deathSoundPrefab: {fileID: 7943624096233179616, guid: 76a2605b5fe14c94e9f96a84c15f78a3, type: 3}
 --- !u!114 &1469077735978639760
 MonoBehaviour:
   m_ObjectHideFlags: 0

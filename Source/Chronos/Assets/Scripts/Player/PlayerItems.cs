@@ -14,6 +14,10 @@ public class PlayerItems : MonoBehaviour
     private EquipmentController[] _equipment;
     [SerializeField] private GameObject[] _equipmentPrefabs;
 
+    [SerializeField] private UpgradeIconController _upgradeIconController;
+
+    [SerializeField] private DataController _dataController;
+
     private void Start()
     {
         _weapons = new WeaponController[_weaponPrefabs.Length];
@@ -30,6 +34,20 @@ public class PlayerItems : MonoBehaviour
         {
             GameObject equipment = Instantiate(_equipmentPrefabs[i], this.gameObject.transform);
             _equipment[i] = equipment.GetComponent<EquipmentController>();
+        }
+
+        StartCoroutine(LateStart(1.0f));
+        
+    }
+
+    IEnumerator LateStart(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        
+        // load upgrade from data controller
+        for (int i = 0; i < _weapons.Length; i++)
+        {
+            _weapons[i].UpgradeFromDataController(_dataController.GetUpgradeMultiplier("Damage"), _dataController.GetUpgradeMultiplier("AttackSpeed"));
         }
     }
 
@@ -55,6 +73,8 @@ public class PlayerItems : MonoBehaviour
         {
             GetEquipment(itemId).Upgrade();
         }
+
+        _upgradeIconController.ActivateItem(itemId);
     }
 
     public void UpgradeWeaponsFromEquipment(EquipmentValues equipmentValues)
@@ -67,7 +87,10 @@ public class PlayerItems : MonoBehaviour
 
     public void AddRandomWeapon()
     {
-        GetWeapon(Random.Range(0, 7)).Upgrade();
+        int weaponId = Random.Range(0, 7);
+        GetWeapon(weaponId).Upgrade();
+
+        _upgradeIconController.ActivateItem(weaponId);
     }
 
     public WeaponController GetWeapon(int itemId)

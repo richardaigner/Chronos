@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -28,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
+    [SerializeField] private DataController _dataController;
 
     private void Start()
     {
@@ -35,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // load upgrade from data controller
+        MoveSpeed *= _dataController.GetUpgradeMultiplier("MoveSpeed");
     }
 
     private void Update()

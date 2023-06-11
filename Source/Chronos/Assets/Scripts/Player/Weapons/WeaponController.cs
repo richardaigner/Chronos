@@ -66,10 +66,18 @@ public class WeaponController : MonoBehaviour
         }
     }
 
+    public void UpgradeFromDataController(float damage, float attackSpeed)
+    {
+        for (int i = 0; i < _weaponValues.Length; i++)
+        {
+            _weaponValues[i].Damage = (int)(_weaponValues[i].Damage * damage);
+            _weaponValues[i].AttackSpeed *= attackSpeed;
+        }
+    }
+
     private void Activate()
     {
         _active = true;
-        // TODO after activaten create a icon to show that the weapon is equipt
     }
 
     private void FireWeapon()

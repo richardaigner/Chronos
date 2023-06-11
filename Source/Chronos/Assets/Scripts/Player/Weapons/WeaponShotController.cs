@@ -9,7 +9,7 @@ public class WeaponShotController : MonoBehaviour
     private bool _bouncing = false;
 
     private float _damageIntervalCounter = 0;
-    private float _damageIntervalLength = 0.1f;
+    private float _damageIntervalLength = 0.05f;
 
     private bool _lifetimeActive = false;
     private float _lifetimeCounter = 0;
@@ -18,10 +18,16 @@ public class WeaponShotController : MonoBehaviour
 
     private WeaponShotMovement _movement;
     [SerializeField] private GameObject _effectPrefeb;
+    [SerializeField] private GameObject _soundPrefab;
 
     private void Start()
     {
         _movement = GetComponent<WeaponShotMovement>();
+
+        if (_soundPrefab != null)
+        {
+            Instantiate(_soundPrefab, transform.position, Quaternion.identity);
+        }
     }
 
     private void Update()
@@ -46,7 +52,7 @@ public class WeaponShotController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (_damageIntervalCounter <= 0 && collision.gameObject.CompareTag("Enemy"))
+        if (_damageIntervalCounter <= 0 && (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBoss")))
         {
             _damageIntervalCounter = _damageIntervalLength;
             HitEnemy();

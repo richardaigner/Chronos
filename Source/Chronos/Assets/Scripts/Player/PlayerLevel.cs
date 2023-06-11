@@ -12,9 +12,13 @@ public class PlayerLevel : MonoBehaviour
     [SerializeField] private XpBar _uiXpBar;
     [SerializeField] private GameObject _uiUpgradeSelect;
 
+    [SerializeField] private GameObject _levelUpEffectPrefab;
+    [SerializeField] private AudioSource _levelupSoundPrefab;
+
     private void Start()
     {
         _uiXpBar.SetProgress(_currentXp, _levelUpXp);
+        _uiUpgradeSelect.SetActive(false);
     }
 
     public void AddXp(int value)
@@ -34,18 +38,16 @@ public class PlayerLevel : MonoBehaviour
         _level++;
         _currentXp -= _levelUpXp;
         _levelUpXp = (int)(_levelUpXp * _levelUpXpIncreaseFactor);
-        ShowUpgradeWindow();
+        _levelupSoundPrefab.Play();
+        Instantiate(_levelUpEffectPrefab, transform.position, Quaternion.identity);
+        StartCoroutine(ShowUpgradeWindow(1.0f));
     }
 
-    private void ShowUpgradeWindow()
+    IEnumerator ShowUpgradeWindow(float waitTime)
     {
+        yield return new WaitForSeconds(waitTime);
+
         _uiUpgradeSelect.SetActive(true);
         _uiUpgradeSelect.GetComponent<UpgradeSelect>().CreateUpgradeButtons();
-        PauseGame();
-    }
-
-    private void PauseGame()
-    {
-        Time.timeScale = 0;
     }
 }

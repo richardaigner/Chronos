@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 00f2fb5cd698f6e43b4eebc13687584f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _clickSoundPrefeb: {fileID: 7943624096233179616, guid: f4ca10c7d1959104d868db9c78dc8b0a, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -7,19 +7,19 @@ public class DataController : MonoBehaviour
     private int _levelProgress = 0;
     public int LevelProgress { get { return _levelProgress; } set { _levelProgress = value; } }
 
-    private int _keys = 0;
+    private int _keys = 10;
     public int Keys { get { return _keys; } set { _keys = value; } }
 
     private int _damageLevel = 0;
-    private float _damageMultiplierPerLevel = 0.05f;
+    private float _damageMultiplierPerLevel = 0.4f;
     
     private int _attackSpeedLevel = 0;
-    private float _attackSpeedMultiplierPerLevel = 0.05f;
+    private float _attackSpeedMultiplierPerLevel = 0.1f;
 
     private int _moveSpeedLevel = 0;
-    private float _moveSpeedMultiplierPerLevel = 0.05f;
+    private float _moveSpeedMultiplierPerLevel = 0.1f;
 
-    private void Start()
+    private void Awake()
     {
         LoadData();
     }
@@ -33,7 +33,7 @@ public class DataController : MonoBehaviour
         _moveSpeedLevel = PlayerPrefs.GetInt("MoveSpeedLevel", 0);
     }
 
-    public void SaveDate()
+    public void SaveData()
     {
         PlayerPrefs.SetInt("LevelProgress", _levelProgress);
         PlayerPrefs.SetInt("Keys", _keys);
@@ -44,7 +44,7 @@ public class DataController : MonoBehaviour
 
     public void ResetData()
     {
-        PlayerPrefs.SetInt("LevelProgress", _levelProgress);
+        PlayerPrefs.SetInt("LevelProgress", 0);
         PlayerPrefs.SetInt("Keys", 0);
         PlayerPrefs.SetInt("DamageLevel", 0);
         PlayerPrefs.SetInt("AttackSpeedLevel", 0);
@@ -52,39 +52,74 @@ public class DataController : MonoBehaviour
         LoadData();
     }
 
-    public float GetDamageMultiplier()
+    public int GetUpgradeLevel(string name)
     {
-        float damageMultiplier = 0;
-
-        for (int i = 0; i < _damageLevel; i++)
+        if (name == "Damage")
         {
-            damageMultiplier += _damageMultiplierPerLevel;
+            return _damageLevel;
+        }
+        else if (name == "AttackSpeed")
+        {
+            return _attackSpeedLevel;
+        }
+        else if (name == "MoveSpeed")
+        {
+            return _moveSpeedLevel;
         }
 
-        return damageMultiplier;
+        return 0;
     }
 
-    public float GetAttackSpeedMultiplier()
+    public void SetUpgradeLevel(string name, int value)
     {
-        float attackSpeedMultiplier = 1;
-
-        for (int i = 0; i < _attackSpeedLevel; i++)
+        if (name == "Damage")
         {
-            attackSpeedMultiplier -= _attackSpeedMultiplierPerLevel;
+            _damageLevel = value;
         }
-
-        return attackSpeedMultiplier;
+        else if (name == "AttackSpeed")
+        {
+            _attackSpeedLevel = value;
+        }
+        else if (name == "MoveSpeed")
+        {
+            _moveSpeedLevel = value;
+        }
     }
 
-    public float GetMoveSpeedMultiplier()
+    public float GetUpgradeMultiplier(string name)
     {
-        float moveSpeedMultiplier = 0;
-
-        for (int i = 0; i < _moveSpeedLevel; i++)
+        if (name == "Damage")
         {
-            moveSpeedMultiplier += _moveSpeedMultiplierPerLevel;
+            float damageMultiplier = 1;
+            for (int i = 0; i < _damageLevel; i++)
+            {
+                damageMultiplier += _damageMultiplierPerLevel;
+            }
+            return damageMultiplier;
+        }
+        else if (name == "AttackSpeed")
+        {
+            float attackSpeedMultiplier = 1;
+
+            for (int i = 0; i < _attackSpeedLevel; i++)
+            {
+                attackSpeedMultiplier -= _attackSpeedMultiplierPerLevel;
+            }
+
+            return attackSpeedMultiplier;
+        }
+        else if (name == "MoveSpeed")
+        {
+            float moveSpeedMultiplier = 1;
+
+            for (int i = 0; i < _moveSpeedLevel; i++)
+            {
+                moveSpeedMultiplier += _moveSpeedMultiplierPerLevel;
+            }
+
+            return moveSpeedMultiplier;
         }
 
-        return moveSpeedMultiplier;
+        return 1;
     }
 }

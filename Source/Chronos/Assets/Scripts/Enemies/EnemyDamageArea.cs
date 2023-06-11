@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class EnemyDamageArea : MonoBehaviour
 {
-    private int _damage = 3;
+    private int _damage = 2;
 
     private bool _fadeIn = true;
     private float _timeCounter = 0;

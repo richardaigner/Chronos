@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MenuOptionsController : MonoBehaviour
 {
-    [SerializeField] private AudioListener audiolistener;
+    [SerializeField] private AudioListener _cameraAudiolistener;
 
     [SerializeField] private UnityEngine.UI.Button _buttonSound;
     [SerializeField] private Text _soundText;
@@ -13,6 +13,8 @@ public class MenuOptionsController : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Button _buttonBack;
 
     [SerializeField] private GameObject _main;
+    [SerializeField] private MenuLevelSelectController _levelSelectController;
+    [SerializeField] private MenuUpgradeButton[] _upgradeButtons;
     [SerializeField] private DataController _dataController;
 
     private void Start()
@@ -42,12 +44,12 @@ public class MenuOptionsController : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("Sound", 1) == 1)
         {
-            audiolistener.enabled = true;
+            _cameraAudiolistener.enabled = true;
             _soundText.text = "Sound On";
         }
         else
         {
-            audiolistener.enabled = false;
+            _cameraAudiolistener.enabled = false;
             _soundText.text = "Sound Off";
         }
     }
@@ -55,6 +57,12 @@ public class MenuOptionsController : MonoBehaviour
     private void OnClickReset()
     {
         _dataController.ResetData();
+        _levelSelectController.UpdateTextAndButtons();
+
+        for (int i = 0; i < _upgradeButtons.Length; i++)
+        {
+            _upgradeButtons[i].LoadValues();
+        }
     }
 
     private void OnClickBack()

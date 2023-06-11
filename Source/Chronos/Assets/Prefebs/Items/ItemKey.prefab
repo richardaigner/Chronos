@@ -143,4 +143,6 @@ MonoBehaviour:
   _itemXp: 0
   _itemKey: 1
   _itemChest: 0
+  _moveOnSpawn: 1
   _destroyEffectPrefeb: {fileID: 7957126942274280821, guid: 23c6b22b02d394749bef4da6c423dc37, type: 3}
+  _pickupSoundPrefab: {fileID: 7943624096233179616, guid: 2bc55a9a4b9caf44c924a6d74ba6ef50, type: 3}

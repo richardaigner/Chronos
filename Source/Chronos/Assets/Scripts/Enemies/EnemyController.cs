@@ -7,22 +7,29 @@ public class EnemyController : MonoBehaviour
     private bool _alive = true;
     private int _health = 20;
     public int Health { get { return _health; } set { _health = value; } }
-
     private int _damage = 1;
-    private float _deathTimer = 0.25f;
 
     private SpriteRenderer _spriteRenderer;
     private EnemyMovement _enemyMovement;
-    [SerializeField] private GameObject _xpPrefab;
-    [SerializeField] private GameObject _deathEffectPrefab;
+    [SerializeField] private GameObject[] _dropTable;
 
     [SerializeField] private bool _damageArea = false;
-    
     private float _damageAreaCounter = 0;
     [SerializeField] private float _damageAreaLength = 4;
-    [SerializeField] private bool _doubleShot = false;
-    private bool _doubleShotFired = false;
+    [SerializeField] private bool _damageAreaDoubleShot = false;
+    private bool _damageAreaDoubleShotFired = false;
     [SerializeField] private GameObject _damageAreaPrefab;
+
+    [SerializeField] private bool _damageShot = false;
+    private float _damageShotCounter = 2;
+    [SerializeField] private float _damageShotLength = 4;
+    [SerializeField] private bool _damageShotDoubleShot = false;
+    private bool _damageShotDoubleShotFired = false;
+    [SerializeField] private GameObject _damageShotPrefab;
+
+    private float _deathTimer = 0.25f;
+    [SerializeField] private GameObject _deathEffectPrefab;
+    [SerializeField] private GameObject _deathSoundPrefab;
 
     private void Start()
     {
@@ -72,7 +79,12 @@ public class EnemyController : MonoBehaviour
     {
         _alive = false;
 
-        Instantiate(_xpPrefab, transform.position, Quaternion.identity);
+        for (int i = 0; i < _dropTable.Length; i++)
+        {
+            Instantiate(_dropTable[i], transform.position, Quaternion.identity);
+        }
+
+        Instantiate(_deathSoundPrefab, transform.position, Quaternion.identity);
         Instantiate(_deathEffectPrefab, transform.position, Quaternion.AngleAxis(110, new Vector3(1, 0, 0)));
 
         GetComponent<EnemyMovement>().enabled = false;
@@ -81,30 +93,61 @@ public class EnemyController : MonoBehaviour
 
     private void UpdateWeapon()
     {
-        if (_damageArea && _alive)
+        if (_alive)
         {
-            _damageAreaCounter -= Time.deltaTime;
-
-            if (_doubleShot && !_doubleShotFired && _damageAreaCounter <= 1)
+            if (_damageArea)
             {
-                FireWeapon();
-                _doubleShotFired = true;
+                _damageAreaCounter -= Time.deltaTime;
+
+                if (_damageAreaDoubleShot && !_damageAreaDoubleShotFired && _damageAreaCounter <= 1)
+                {
+                    FireWeaponArea();
+                    _damageAreaDoubleShotFired = true;
+                }
+
+                if (_damageAreaCounter <= 0)
+                {
+                    _damageAreaCounter += _damageAreaLength;
+                    FireWeaponArea();
+                    _damageAreaDoubleShotFired = false;
+                }
             }
-
-            if (_damageAreaCounter <= 0)
+            
+            if (_damageShot)
             {
-                _damageAreaCounter += _damageAreaLength;
-                FireWeapon();
-                _doubleShotFired = false;
+                _damageShotCounter -= Time.deltaTime;
+
+                if (_damageShotDoubleShot && !_damageShotDoubleShotFired && _damageShotCounter <= 1)
+                {
+                    FireWeaponShot();
+                    _damageShotDoubleShotFired = true;
+                }
+
+                if (_damageShotCounter <= 0)
+                {
+                    _damageShotCounter += _damageShotLength;
+                    FireWeaponShot();
+                    _damageShotDoubleShotFired = false;
+                }
             }
         }
     }
 
-    private void FireWeapon()
+    private void FireWeaponArea()
     {
-        Vector2 playerPosition = GameObject.Find("Player").transform.position;
-        Vector2 rndPostion = new Vector2(Random.Range(-200, 200), Random.Range(-200, 200));
-        Instantiate(_damageAreaPrefab, playerPosition + rndPostion, Quaternion.identity);
+        GameObject player = GameObject.Find("Player");
+
+        if (player != null)
+        {
+            Vector2 playerPosition = player.transform.position;
+            Vector2 rndPostion = new Vector2(Random.Range(-200, 200), Random.Range(-200, 200));
+            Instantiate(_damageAreaPrefab, playerPosition + rndPostion, Quaternion.identity);
+        }
+    }
+
+    private void FireWeaponShot()
+    {
+        Instantiate(_damageShotPrefab, transform.position, Quaternion.identity);
     }
 
     private void UpdateDeathAnimation()

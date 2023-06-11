@@ -32,7 +32,7 @@ public class EnemyMovement : MonoBehaviour
         _target = GameObject.Find("Player").transform;
 
         _rndMoveSpeed = Random.Range(25, 50);
-        _rndMoveDirection = new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)).normalized;
+        _rndMoveDirection = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
     }
 
     private void FixedUpdate()
@@ -44,7 +44,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void FindTarget()
     {
-
         if (_target == null)
         {
             GameObject player = GameObject.Find("Player");

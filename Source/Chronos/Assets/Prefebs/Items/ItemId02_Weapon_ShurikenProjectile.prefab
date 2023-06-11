@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effectPrefeb: {fileID: 2127182024690063338, guid: c683885a81e54d94594ec0d7b9fe339c, type: 3}
+  _soundPrefab: {fileID: 7943624096233179616, guid: 20ea3feb2e7bdc542b9c28b7fb941d1e, type: 3}
 --- !u!114 &4393063342104374398
 MonoBehaviour:
   m_ObjectHideFlags: 0

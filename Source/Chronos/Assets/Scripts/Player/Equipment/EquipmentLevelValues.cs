@@ -5,12 +5,12 @@ public static class EquipmentLevelValues
         if (itemId == 50) // heart container
         {
             return new EquipmentValues[] {  new EquipmentValues(     0,     0,     0,     0,     0,     1,     1,     1,     1,     1),
-                                            new EquipmentValues(     5,     0,     0,     0,     0,     1,     1,     1,     1,     1),
-                                            new EquipmentValues(     5,     0,     0,     0,     0,     1,     1,     1,     1,     1),
-                                            new EquipmentValues(     5,     0,     0,     0,     0,     1,     1,     1,     1,     1),
-                                            new EquipmentValues(     5,     0,     0,     0,     0,     1,     1,     1,     1,     1),
-                                            new EquipmentValues(     5,     0,     0,     0,     0,     1,     1,     1,     1,     1),
-                                            new EquipmentValues(    10,     0,     0,     0,     0,     1,     1,     1,     1,     1) };
+                                            new EquipmentValues(     2,     0,     0,     0,     0,     1,     1,     1,     1,     1),
+                                            new EquipmentValues(     2,     0,     0,     0,     0,     1,     1,     1,     1,     1),
+                                            new EquipmentValues(     2,     0,     0,     0,     0,     1,     1,     1,     1,     1),
+                                            new EquipmentValues(     2,     0,     0,     0,     0,     1,     1,     1,     1,     1),
+                                            new EquipmentValues(     2,     0,     0,     0,     0,     1,     1,     1,     1,     1),
+                                            new EquipmentValues(     4,     0,     0,     0,     0,     1,     1,     1,     1,     1) };
         }
         else if (itemId == 51) // fast boots
         {
