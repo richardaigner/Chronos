@@ -54,7 +54,7 @@ public class SpawnSequence : MonoBehaviour
                 _levelFinished = true;
                 StopTime();
                 GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                _enemiesToKill = enemies.Length / 2;
+                _enemiesToKill = 10 + enemies.Length / 2;
             }
         }
 

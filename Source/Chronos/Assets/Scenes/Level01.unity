@@ -11828,7 +11828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelNumber: 1
-  _fireworksEffectPrefab: {fileID: 0}
+  _fireworksEffectPrefab: {fileID: 8563446244406527133, guid: 7393d4377d4989644977ad834020e76d, type: 3}
   _levelName: Forest
   _gameController: {fileID: 698773713}
   _dataController: {fileID: 5846349110283943098}
